@@ -7,8 +7,8 @@ import projet.ejb.data.Compte;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-02T10:48:59+0200",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 17.0.12 (Eclipse Adoptium)"
+    date = "2024-10-03T11:16:54+0200",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 22.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
 public class IMapperEjbImpl implements IMapperEjb {
