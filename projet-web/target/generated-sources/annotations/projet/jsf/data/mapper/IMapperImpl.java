@@ -7,8 +7,8 @@ import projet.jsf.data.Compte;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-03T11:31:44+0200",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 17.0.12 (Eclipse Adoptium)"
+    date = "2024-10-08T16:27:58+0200",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 22.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
 public class IMapperImpl implements IMapper {

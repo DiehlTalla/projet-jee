@@ -19,3 +19,6 @@ CREATE TABLE compte (
 );
 CREATE UNIQUE INDEX idx_compte_pseudo ON compte (Pseudo ASC);
 
+
+
+
