@@ -10,10 +10,12 @@ import javax.inject.Inject;
 
 import projet.commun.dto.DtoParent;
 import projet.commun.exception.ExceptionValidation;
+import projet.commun.service.IServiceParent;
+import projet.ejb.dao.IDaoParent;
 import projet.ejb.data.Parent;
 import projet.ejb.data.mapper.IMapperEjb;
 
-public class ServiceParent implements IDaoParent {
+public class ServiceParent implements IServiceParent {
 	
 	
 	// Champs
@@ -44,7 +46,7 @@ public class ServiceParent implements IDaoParent {
 
 			@Override
 			@TransactionAttribute(NOT_SUPPORTED)
-			public DtoParent retrouver(int Parent) {
+			public DtoParent retrouver(int idParent) {
 				return mapper.map(daoParent.retrouver(idParent));
 			}
 

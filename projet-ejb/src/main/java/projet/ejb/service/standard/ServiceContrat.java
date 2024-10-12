@@ -10,11 +10,13 @@ import javax.inject.Inject;
 
 import projet.commun.dto.DtoContrat;
 import projet.commun.exception.ExceptionValidation;
-import projet.ejb.dao.IDaoCompte; 
+import projet.commun.service.IServiceContrat;
+import projet.ejb.dao.IDaoCompte;
+import projet.ejb.dao.IDaoContrat;
 import projet.ejb.data.Contrat;
 import projet.ejb.data.mapper.IMapperEjb;
 
-public class ServiceContrat implements IDaoContrat {
+public class ServiceContrat implements IServiceContrat {
 
 	
 	// Champs
@@ -45,7 +47,7 @@ public class ServiceContrat implements IDaoContrat {
 
 		@Override
 		@TransactionAttribute(NOT_SUPPORTED)
-		public DtoContrat retrouver(int Contrat) {
+		public DtoContrat retrouver(int idContrat) {
 			return mapper.map(daoContrat.retrouver(idContrat));
 		}
 
@@ -81,15 +83,15 @@ public class ServiceContrat implements IDaoContrat {
 				message.append("\nLe prenom est trop long.");
 			}
 			
-			if (dtoContrat.getDateNaissance() == null || dtoContrat.getDateNaissance().isEmpty()) {
+			if (dtoContrat.getDateNaissance() == null || ((List<DtoContrat>) dtoContrat.getDateNaissance()).isEmpty()) {
 				message.append("\nLe date de naissance est absente.");
 			}
 			
-			if (dtoContrat.getDebut() == null || dtoContrat.getDebut().isEmpty()) {
+			if (dtoContrat.getDebut() == null || ((List<DtoContrat>) dtoContrat.getDebut()).isEmpty()) {
 				message.append("\nLa date de début est absente.");
 			}
 			
-			if (dtoContrat.getFin() == null || dtoContrat.getFin().isEmpty()) {
+			if (dtoContrat.getFin() == null || ((List<DtoContrat>) dtoContrat.getFin()).isEmpty()) {
 				message.append("\nLa date de fin est absente.");
 			}
 			
@@ -102,7 +104,6 @@ public class ServiceContrat implements IDaoContrat {
 				throw new ExceptionValidation(message.toString().substring(1));
 			}
 		}
-
 	
 	
 }

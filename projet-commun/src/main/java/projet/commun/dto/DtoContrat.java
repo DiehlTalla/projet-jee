@@ -12,7 +12,7 @@ public class DtoContrat implements Serializable {
 	private int id;
 	private String nom;
 	private String prenom;
-	private Data dateNaissance;
+	private Date dateNaissance;
 	private Date debut;
 	private Date fin;
 	private int tarifHoraire;
@@ -24,7 +24,7 @@ public class DtoContrat implements Serializable {
 	}
 	
 	
-	public DtoContrat(int id, String nom, String prenom, Data dateNaissance, Date debut, Date fin, int tarifHoraire,
+	public DtoContrat(int id, String nom, String prenom, Date dateNaissance, Date debut, Date fin, int tarifHoraire,
 			int entretien) {
 		this.id = id;
 		this.nom = nom;
@@ -67,12 +67,12 @@ public class DtoContrat implements Serializable {
 	}
 
 
-	public Data getDateNaissance() {
+	public Date getDateNaissance() {
 		return dateNaissance;
 	}
 
 
-	public void setDateNaissance(Data dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
