@@ -27,7 +27,7 @@
 	<h:form rendered="#{compteActif.loggedIn}">
 		<h:link outcome="comptes" value="Personnes" rendered="#{compteActif.loggedIn }" />
 		<h:panelGroup rendered="#{compteActif.admin}">
-			<h:link outcome="comptes" value="Catégories"  />
+			<h:link outcome="contrats" value="Contrats"  />
 			<h:link outcome="comptes" value="Comptes"  />
 		</h:panelGroup>
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
