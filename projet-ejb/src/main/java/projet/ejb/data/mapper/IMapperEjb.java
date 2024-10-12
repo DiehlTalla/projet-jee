@@ -10,25 +10,20 @@ import projet.ejb.data.Compte;
 import projet.ejb.data.Contrat;
 import projet.ejb.data.Parent;
 
- 
-@Mapper( componentModel = "cdi" )
-public interface IMapperEjb {  
-	
-	static final IMapperEjb INSTANCE = Mappers.getMapper( IMapperEjb.class );
-	
-	
+@Mapper(componentModel = "cdi")
+public interface IMapperEjb {
+
+	static final IMapperEjb INSTANCE = Mappers.getMapper(IMapperEjb.class);
+
 	// Compte
+
+	Compte map(DtoCompte source);
+
+	DtoCompte map(Compte source);
+
 	
-	Compte map( DtoCompte source );
 	
-	DtoCompte map( Compte source );
 	
-Contrat map( DtoContrat source );
-	
-	DtoContrat map( Contrat source );
-	
-Parent map( DtoParent source );
-	
-	DtoParent map( Parent source );
-	
+
+
 }
