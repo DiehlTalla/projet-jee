@@ -89,7 +89,7 @@ public class Parent implements Serializable {
 		return adressePostale;
 	}
 
-	public void setAdresse_postale(String adressePostale) {
+	public void setAdressePostale(String adressePostale) {
 		this.adressePostale = adressePostale;
 	}
 

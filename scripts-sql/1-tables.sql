@@ -25,7 +25,7 @@ CREATE TABLE parent (
 	IdCompte			INT				NOT NULL,
 	Nom					VARCHAR(25)		NOT NULL,
 	Prenom 				VARCHAR(25)		NOT NULL,
-	Adresse_Postal		VARCHAR(25)		NOT NULL,
+	Adresse_Postale		VARCHAR(25)		NOT NULL,
 	Email				VARCHAR(25)		NOT NULL,
 	Telephone			VARCHAR(25)		NOT NULL,
 	FOREIGN KEY (IdCompte) REFERENCES Compte (IdCompte) ON DELETE CASCADE,
