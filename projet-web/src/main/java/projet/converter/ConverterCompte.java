@@ -2,18 +2,18 @@ package projet.converter;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UISelectItems;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import projet.jsf.data.Compte;
 
 
 @Named
-@ViewScoped
+@RequestScoped
 public class ConverterCompte implements Converter<Compte> {
 
 	@SuppressWarnings("unchecked")
