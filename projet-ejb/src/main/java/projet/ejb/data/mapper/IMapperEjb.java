@@ -20,6 +20,18 @@ public interface IMapperEjb {
 	Compte map(DtoCompte source);
 
 	DtoCompte map(Compte source);
+	
+	// Contrat
+	
+	Contrat map(DtoContrat source);
+
+	DtoContrat map(Contrat source);
+	
+	// Parent
+	
+	Parent map(DtoParent source);
+
+	DtoParent map(Parent source);
 
 	
 	
