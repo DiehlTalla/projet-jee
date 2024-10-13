@@ -88,15 +88,15 @@ public class ServiceContrat implements IServiceContrat {
 				message.append("\nLe prenom est trop long.");
 			}
 			
-			if (dtoContrat.getDateNaissance() == null || ((List<DtoContrat>) dtoContrat.getDateNaissance()).isEmpty()) {
+			if (dtoContrat.getDateNaissance() == null || dtoContrat.getDateNaissance().isEmpty()) {
 				message.append("\nLe date de naissance est absente.");
 			}
 			
-			if (dtoContrat.getDebut() == null || ((List<DtoContrat>) dtoContrat.getDebut()).isEmpty()) {
+			if (dtoContrat.getDebut() == null || dtoContrat.getDebut().isEmpty()) {
 				message.append("\nLa date de début est absente.");
 			}
 			
-			if (dtoContrat.getFin() == null || ((List<DtoContrat>) dtoContrat.getFin()).isEmpty()) {
+			if (dtoContrat.getFin() == null || dtoContrat.getFin().isEmpty()) {
 				message.append("\nLa date de fin est absente.");
 			}
 			
@@ -109,6 +109,7 @@ public class ServiceContrat implements IServiceContrat {
 				throw new ExceptionValidation(message.toString().substring(1));
 			}
 		}
+
 	
 	
 }
