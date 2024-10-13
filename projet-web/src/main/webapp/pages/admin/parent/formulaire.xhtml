@@ -61,6 +61,20 @@
 							for="telephone" errorClass="error" /></td>
 				</tr>
 
+				
+				<tr>
+					<td><h:outputLabel for="compte">Compte :</h:outputLabel>
+					</td>
+					<td><h:selectOneMenu id="compte"
+							value="#{modelParent.courant.compte}"
+							converter="#{converterCompte}">
+							<f:selectItems value="#{modelCompte.liste}" var="item"
+								itemLabel="#{item.pseudo}" />
+						</h:selectOneMenu> <br />
+					<h:message for="compte" errorClass="error" /></td>
+				</tr>
+
+
 
 			</table>
 
