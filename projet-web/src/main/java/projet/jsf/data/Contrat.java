@@ -1,65 +1,64 @@
-package projet.ejb.data;
+package projet.jsf.data;
 
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "contrat")
-public class Contrat {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idcontrat")
-	private int id;
+@SuppressWarnings("serial")
+public class Contrat implements Serializable {
 
-	@ManyToOne
-	@JoinColumn(name = "idparent")
+	private Integer id;
+
+	@NotNull(message = "Le parent doit être renseigné")
 	private Parent parent;
 	
-	@Column(name = "nom")
+	@NotBlank(message = "Le nom doit être rendeigné")
+	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car maxi")
 	private String nom;
 	
-	@Column(name = "prenom")
+	@NotBlank(message = "Le prénom doit être rendeigné")
+	@Size(max=25, message = "Valeur trop longue pour le prénom : 25 car maxi")
 	private String prenom;
 	
-	@Column(name = "datenaissance")
+	@NotNull(message = "La date de naissance doit être renseignée")
 	private Date dateNaissance;
 	
-	@Column(name = "debut")
+	@NotNull(message = "La date de début du contrat doit être renseignée")
 	private Date debut;
 	
-	@Column(name = "fin")
+	@NotNull(message = "La date de fin du contrat doit être renseignée")
 	private Date fin;
 	
-	@Column(name = "tarifhoraire")
+	@NotNull(message = "Le tarif horaire doit être renseigné")
+	@PositiveOrZero(message = "Le tarif horaire doit être positif et supérieur à zéro")
 	private BigDecimal tarifHoraire;
 	
-	@Column(name = "tauxhoraire")
+	@NotNull(message = "Le taux horaire doit être renseigné")
+	@PositiveOrZero(message = "Le taux doit être positif et supérieur à zéro")
 	private BigDecimal tauxHoraire;
 	
-	@Column(name = "indemniteentretient")
-	private int indemniteEntretient;
+	@NotNull(message = "L'indemnité d'entretien doit être renseigné")
+	@PositiveOrZero(message = "L'indemnité d'entretien doit être positif et supérieur à zéro")
+	private BigDecimal indemniteEntretient;
 	
-	@Column(name = "indemniterepas")
-	private int indemniteRepas;
+	@NotNull(message = "L'indemnité de repas doit être renseigné")
+	@PositiveOrZero(message = "L'indemnité de repas doit être positif et supérieur à zéro")
+	private BigDecimal indemniteRepas;
 
 	
 	public Contrat() {
 
 	}
 
-	public Contrat(int id, Parent parent, String nom, String prenom, Date dateNaissance, Date debut, Date fin,
-			BigDecimal tarifHoraire, BigDecimal tauxHoraire, int indemniteEntretient, int indemniteRepas) {
+	public Contrat(Integer id, Parent parent, String nom, String prenom, Date dateNaissance, Date debut, Date fin,
+			BigDecimal tarifHoraire, BigDecimal tauxHoraire, BigDecimal indemniteEntretient, BigDecimal indemniteRepas) {
 
 		this.id = id;
 		this.parent = parent;
@@ -75,11 +74,11 @@ public class Contrat {
 		
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -147,19 +146,19 @@ public class Contrat {
 		this.tauxHoraire = tauxHoraire;
 	}
 
-	public int getIndemniteEntretient() {
+	public BigDecimal getIndemniteEntretient() {
 		return indemniteEntretient;
 	}
 
-	public void setIndemniteEntretient(int indemniteEntretient) {
+	public void setIndemniteEntretient(BigDecimal indemniteEntretient) {
 		this.indemniteEntretient = indemniteEntretient;
 	}
 
-	public int getIndemniteRepas() {
+	public BigDecimal getIndemniteRepas() {
 		return indemniteRepas;
 	}
 
-	public void setIndemniteRepas(int indemniteRepas) {
+	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
 	}
 

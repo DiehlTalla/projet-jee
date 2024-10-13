@@ -3,7 +3,8 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets">>
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui">>>
 
 	 <f:metadata>
 		 <f:viewParam name="id" value="#{modelCompte.courant.id}" />
@@ -51,22 +52,36 @@
 			
 			<tr>
 				<td>
-					<h:outputLabel for="naissance">Date de naissance :</h:outputLabel>				
+					<h:outputLabel for="date">Date de naissance :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="date" size="25" 
-						value="#{modelContrat.courant.dateNaissance}" />
+					<p:calendar id="date" value="#{modelContrat.courant.dateNaissance}" pattern="dd/MM/yyyy" showButtonPanel="true" />
+<!-- 					<h:inputText id="date" size="25"  -->
+<!-- 						value="#{modelContrat.courant.dateNaissance}" /> -->
 					<br /><h:message for="date" errorClass="error"/>
 				</td>
 			</tr>
+			
+			<tr>
+					<td><h:outputLabel for="parent">Parent :</h:outputLabel>
+					</td>
+					<td><h:selectOneMenu id="parent"
+							value="#{modelContrat.courant.parent}"
+							converter="#{converterParent}">
+							<f:selectItems value="#{modelParent.listeAvecNull}" var="item"
+								itemLabel="#{item.nom} #{item.prenom}" />
+						</h:selectOneMenu> <br />
+					<h:message for="parent" errorClass="error" /></td>
+				</tr>
 			
 			<tr>
 				<td>
 					<h:outputLabel for="debut">Date de début :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="debut" size="25" 
-						value="#{modelContrat.courant.debut}" />
+					<p:calendar id="debut" value="#{modelContrat.courant.debut}" pattern="dd/MM/yyyy" showButtonPanel="true" />
+<!-- 					<h:inputText id="debut" size="25"  -->
+<!-- 						value="#{modelContrat.courant.debut}" /> -->
 					<br /><h:message for="debut" errorClass="error"/>
 				</td>
 			</tr>
@@ -76,11 +91,13 @@
 					<h:outputLabel for="fin">Date de fin :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="fin" size="25" 
-						value="#{modelContrat.courant.fin}" />
+					<p:calendar id="fin" value="#{modelContrat.courant.fin}" pattern="dd/MM/yyyy" showButtonPanel="true" />
+<!-- 					<h:inputText id="fin" size="25"  -->
+<!-- 						value="#{modelContrat.courant.fin}" /> -->
 					<br /><h:message for="fin" errorClass="error"/>
 				</td>
 			</tr>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" />
 			
 			<tr>
 				<td>
@@ -88,7 +105,7 @@
 				</td>
 				<td>
 					<h:inputText id="tarif" size="25" 
-						value="#{modelContrat.courant.tarifHauraire}" />
+						value="#{modelContrat.courant.tarifHoraire}" />
 					<br /><h:message for="tarif" errorClass="error"/>
 				</td>
 			</tr>
@@ -99,7 +116,7 @@
 				</td>
 				<td>
 					<h:inputText id="indemnite" size="25" 
-						value="#{modelContrat.courant.entretien}" />
+						value="#{modelContrat.courant.indemniteEntretient}" />
 					<br /><h:message for="indemnite" errorClass="error"/>
 				</td>
 			</tr>
@@ -109,7 +126,7 @@
 		<br /> 
 		<h:commandButton value="Valider" 
 			action="#{modelContrat.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="comptes" />
+		<h:button value="Retour" outcome="contrats" />
 	</h:form>
 
 	</ui:define>

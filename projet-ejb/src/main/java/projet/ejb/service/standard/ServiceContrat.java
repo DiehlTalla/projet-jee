@@ -5,6 +5,8 @@ import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
@@ -16,6 +18,9 @@ import projet.ejb.dao.IDaoContrat;
 import projet.ejb.data.Contrat;
 import projet.ejb.data.mapper.IMapperEjb;
 
+
+@Stateful
+@Remote
 public class ServiceContrat implements IServiceContrat {
 
 	

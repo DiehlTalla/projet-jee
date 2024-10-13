@@ -1,41 +1,38 @@
-package projet.ejb.data;
+package projet.jsf.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "parent")
-public class Parent {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idparent")
-	private int id;
+@SuppressWarnings("serial")
+public class Parent implements Serializable {
+
 	
-	@OneToOne
-	@JoinColumn(name = "idcompte")
+	private Integer id;
+	
+	@NotNull(message = "Le compte doit être renseigné")
 	private Compte compte;
 	
-	@Column(name = "nom")
+	@NotBlank(message = "Le nom doit être rendeigné")
+	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car maxi")
 	private String nom;
 
-	@Column(name = "prenom")
+	@NotBlank(message = "Le prénom doit être rendeigné")
+	@Size(max=25, message = "Valeur trop longue pour le prénom : 25 car maxi")
 	private String prenom;
 
-	@Column(name = "adresse_postale")
+	@NotBlank(message = "L'adresse postale doit être renseignée")
 	private String adressePostale;
 
-	@Column(name = "email")
+	@NotBlank(message = "L'email doit être renseigné")
+	@Email(message = "Le format de l'email est incorrect")
 	private String email;
 	
-	@Column(name = "telephone")
+	@NotBlank(message = "Le téléphone doit être renseigné")
 	private String telephone;
 
 	public Parent() {
@@ -43,7 +40,7 @@ public class Parent {
 
 	
 
-	public Parent(int id, Compte compte, String nom, String prenom, String adressePostale, String email,
+	public Parent(Integer id, Compte compte, String nom, String prenom, String adressePostale, String email,
 			String telephone) {
 
 		this.id = id;
@@ -56,11 +53,11 @@ public class Parent {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
