@@ -19,39 +19,29 @@ import javax.persistence.Table;
 public class Contrat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idcontrat")
 	private int id;
 
 	@ManyToOne
 	@JoinColumn(name = "idparent")
 	private Parent parent;
-	
 	@Column(name = "nom")
 	private String nom;
-	
 	@Column(name = "prenom")
 	private String prenom;
-	
-	@Column(name = "datenaissance")
+	@Column(name = "dateNaissance")
 	private Date dateNaissance;
-	
 	@Column(name = "debut")
 	private Date debut;
-	
 	@Column(name = "fin")
 	private Date fin;
-	
-	@Column(name = "tarifhoraire")
-	private BigDecimal tarifHoraire;
-	
-	@Column(name = "tauxhoraire")
-	private BigDecimal tauxHoraire;
-	
-	@Column(name = "indemniteentretient")
-	private int indemniteEntretient;
-	
-	@Column(name = "indemniterepas")
-	private int indemniteRepas;
+	@Column(name = "tarif")
+	private BigDecimal tarif;
+	@Column(name = "taux")
+	private BigDecimal taux;
+	@Column(name = "montantEntretient")
+	private int montantEntretient;
+	@Column(name = "repas")
+	private int repas;
 
 	
 	public Contrat() {
@@ -59,7 +49,7 @@ public class Contrat {
 	}
 
 	public Contrat(int id, Parent parent, String nom, String prenom, Date dateNaissance, Date debut, Date fin,
-			BigDecimal tarifHoraire, BigDecimal tauxHoraire, int indemniteEntretient, int indemniteRepas) {
+			BigDecimal tarif, BigDecimal taux, int montantEntretient, int repas) {
 
 		this.id = id;
 		this.parent = parent;
@@ -68,10 +58,10 @@ public class Contrat {
 		this.dateNaissance = dateNaissance;
 		this.debut = debut;
 		this.fin = fin;
-		this.tarifHoraire = tarifHoraire;
-		this.tauxHoraire = tauxHoraire;
-		this.indemniteEntretient = indemniteEntretient;
-		this.indemniteRepas = indemniteRepas;
+		this.tarif = tarif;
+		this.taux = taux;
+		this.montantEntretient = montantEntretient;
+		this.repas = repas;
 		
 	}
 
@@ -131,36 +121,36 @@ public class Contrat {
 		this.fin = fin;
 	}
 
-	public BigDecimal getTarifHoraire() {
-		return tarifHoraire;
+	public BigDecimal getTarif() {
+		return tarif;
 	}
 
-	public void setTarifHoraire(BigDecimal tarifHoraire) {
-		this.tarifHoraire = tarifHoraire;
+	public void setTarif(BigDecimal tarif) {
+		this.tarif = tarif;
 	}
 
-	public BigDecimal getTauxHoraire() {
-		return tauxHoraire;
+	public BigDecimal getTaux() {
+		return taux;
 	}
 
-	public void setTauxHoraire(BigDecimal tauxHoraire) {
-		this.tauxHoraire = tauxHoraire;
+	public void setTaux(BigDecimal taux) {
+		this.taux = taux;
 	}
 
-	public int getIndemniteEntretient() {
-		return indemniteEntretient;
+	public int getMontantEntretient() {
+		return montantEntretient;
 	}
 
-	public void setIndemniteEntretient(int indemniteEntretient) {
-		this.indemniteEntretient = indemniteEntretient;
+	public void setMontantEntretient(int montantEntretient) {
+		this.montantEntretient = montantEntretient;
 	}
 
-	public int getIndemniteRepas() {
-		return indemniteRepas;
+	public int getRepas() {
+		return repas;
 	}
 
-	public void setIndemniteRepas(int indemniteRepas) {
-		this.indemniteRepas = indemniteRepas;
+	public void setRepas(int repas) {
+		this.repas = repas;
 	}
 
 	

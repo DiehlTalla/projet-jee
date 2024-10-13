@@ -16,13 +16,10 @@ import javax.persistence.Table;
 public class Parent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idparent")
 	private int id;
-	
 	@OneToOne
 	@JoinColumn(name = "idcompte")
 	private Compte compte;
-	
 	@Column(name = "nom")
 	private String nom;
 
@@ -30,11 +27,10 @@ public class Parent {
 	private String prenom;
 
 	@Column(name = "adresse_postale")
-	private String adressePostale;
+	private String adresse_postale;
 
 	@Column(name = "email")
 	private String email;
-	
 	@Column(name = "telephone")
 	private String telephone;
 
@@ -43,14 +39,14 @@ public class Parent {
 
 	
 
-	public Parent(int id, Compte compte, String nom, String prenom, String adressePostale, String email,
+	public Parent(int id, Compte compte, String nom, String prenom, String adresse_postale, String email,
 			String telephone) {
 
 		this.id = id;
 		this.compte = compte;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adressePostale = adressePostale;
+		this.adresse_postale = adresse_postale;
 		this.email = email;
 		this.telephone = telephone;
 
@@ -88,12 +84,12 @@ public class Parent {
 		this.prenom = prenom;
 	}
 
-	public String getAdressePostale() {
-		return adressePostale;
+	public String getAdresse_postale() {
+		return adresse_postale;
 	}
 
-	public void setAdresse_postale(String adressePostale) {
-		this.adressePostale = adressePostale;
+	public void setAdresse_postale(String adresse_postale) {
+		this.adresse_postale = adresse_postale;
 	}
 
 	public String getEmail() {

@@ -119,12 +119,6 @@
 			<artifactId>validation-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-    		<groupId>org.primefaces</groupId>
-    		<artifactId>primefaces</artifactId>
-   	 		<version>12.0.0</version> <!-- Changez la version selon vos besoins -->
-		</dependency>
-
 	</dependencies>
 
 	<build>

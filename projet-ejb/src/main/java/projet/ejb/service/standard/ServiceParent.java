@@ -5,8 +5,6 @@ import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
@@ -17,9 +15,6 @@ import projet.ejb.dao.IDaoParent;
 import projet.ejb.data.Parent;
 import projet.ejb.data.mapper.IMapperEjb;
 
-
-@Stateful
-@Remote
 public class ServiceParent implements IServiceParent {
 	
 	

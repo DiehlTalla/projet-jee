@@ -4,11 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
 import projet.commun.dto.DtoCompte;
-import projet.commun.dto.DtoContrat;
-import projet.commun.dto.DtoParent;
 import projet.jsf.data.Compte;
-import projet.jsf.data.Contrat;
-import projet.jsf.data.Parent;
 
 
 @Mapper( componentModel = "cdi" )
@@ -25,29 +21,5 @@ public interface IMapper {
 	Compte duplicate( Compte source );
 
 	Compte update( @MappingTarget Compte target, Compte source );
-	
-	//-------
-	// Contrat
-	//-------
-	
-	Contrat    map( DtoContrat source );
-	
-	DtoContrat map( Contrat source );
-	
-	Contrat duplicate( Contrat source );
-
-	Contrat update( @MappingTarget Contrat target, Contrat source );
-	
-	//-------
-	// Parent
-	//-------
-	
-	Parent    map( DtoParent source );
-	
-	DtoParent map( Parent source );
-	
-	Parent duplicate( Parent source );
-
-	Parent update( @MappingTarget Parent target, Parent source );
 
 }

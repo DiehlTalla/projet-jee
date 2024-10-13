@@ -1,23 +1,13 @@
 package projet.ejb.dao.jpa;
 
-import static javax.ejb.TransactionAttributeType.MANDATORY;
-
 import java.util.List;
 
-import javax.ejb.Local;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoContrat;
 import projet.ejb.data.Contrat;
 
-
-@Stateless
-@Local
-@TransactionAttribute(MANDATORY)
 public class DaoContrat implements IDaoContrat {
 	
 	@PersistenceContext
