@@ -3,7 +3,7 @@ SET search_path TO projet;
 
 -- Supprime toutes les données
 DELETE FROM compte;
-
+DELETE FROM parent;
 
 -- Insère les données
 
