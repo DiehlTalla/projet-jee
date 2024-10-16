@@ -1,27 +1,22 @@
 package projet.ejb.service.standard;
 
-import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
-import static javax.ejb.TransactionAttributeType.REQUIRED;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoContrat;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceContrat;
-import projet.ejb.dao.IDaoCompte;
 import projet.ejb.dao.IDaoContrat;
 import projet.ejb.data.Contrat;
 import projet.ejb.data.mapper.IMapperEjb;
 
 
-@Stateful
+@Stateless
 @Remote
 public class ServiceContrat implements IServiceContrat {
 
