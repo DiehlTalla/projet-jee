@@ -5,14 +5,14 @@
      xmlns:ui="http://java.sun.com/jsf/facelets"
      template="/template/page-standard.xhtml" >
 
-     <ui:define name="titre">Liste des contrats</ui:define>
+     <ui:define name="titre">Liste des Tarifs</ui:define>
 
     <ui:define name="contenu">
 
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelContrat.liste}" var="item" 
+			value="#{modelTarif.liste}" var="item" 
 			rowClasses="impair, pair" columnClasses="left,left,center"
 		>
 			<h:column>
@@ -25,67 +25,26 @@
 		
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Nom de l'enfant" />
-				</f:facet>
-				#{item.nom} #{item.prenom}
-			</h:column>
-			
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date de naissance" />
-				</f:facet>
-				#{item.dateNaissance}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nom du parent" />
-				</f:facet>
-				#{item.parent.nom} #{item.parent.prenom}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date de début" />
-				</f:facet>
-				#{item.debut}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date de fin" />
-				</f:facet>
-				#{item.fin}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
 					<h:outputText value="Tarif horaire" />
 				</f:facet>
 				#{item.tarifHoraire}
 			</h:column>
 			
+			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Idemnité d'entretien" />
+					<h:outputText value="Minimum Journalier" />
 				</f:facet>
-				#{item.entretien}
+				#{item.minimumJournalier}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Taux horaire" />
-				</f:facet>
-				#{item.tauxHoraire}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Idemnité de repas" />
+					<h:outputText value="Indemnité de repas" />
 				</f:facet>
 				#{item.indemniteRepas}
 			</h:column>
+			
 			
 			<h:column>
 				<f:facet name="header">
@@ -97,7 +56,7 @@
 					title="Modifier" 
 					styleClass="image-action"
 				/>
-				<h:commandButton action="#{modelContrat.supprimer(item)}" 
+				<h:commandButton action="#{modelTarif.supprimer(item)}" 
 					value="Supprimer" 
 					onclick="return confirm('Confirmez-vous la suppression ?')" 
 					image="#{ resource['images:supprimer.png'] }" 
