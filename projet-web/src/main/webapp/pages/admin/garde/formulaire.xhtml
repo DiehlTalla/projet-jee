@@ -21,29 +21,43 @@
 				<tr>
 					<td><h:outputLabel for="id">Id:</h:outputLabel></td>
 					<td><h:inputText id="id" size="5" readonly="true"
-							value="#{modelGarde.courant.id}" /> <br />
-					<h:message for="id" errorClass="error" /></td>
+							value="#{modelGarde.courant.id}" /> <br /> <h:message for="id"
+							errorClass="error" /></td>
 				</tr>
+
+
 				<tr>
-					<td><h:outputLabel for="nom">HeureArrivee :</h:outputLabel></td>
-					<td><h:inputText id="heureArrivee" 
-							value="#{modelGarde.courant.heureArrivee}" /> <br />
-					<h:message for="heureArrivee" errorClass="error" /></td>
+					<td><h:outputLabel for="date">Date  :</h:outputLabel></td>
+					<td><p:calendar id="date" value="#{modelGarde.courant.date}"
+							pattern="dd/MM/yyyy" showButtonPanel="true" /> <!-- 					<h:inputText id="date" size="25"  -->
+						<!-- 						value="#{modelGarde.courant.date}" /> --> <br />
+					<h:message for="date" errorClass="error" /></td>
 				</tr>
+
+				<tr>
+
+					<td><h:outputLabel for="nom">HeureArrivee :</h:outputLabel></td>
+					<td><h:inputText id="heureArrivee"
+							value="#{modelGarde.courant.heureArrivee}" /> <br /> <h:message
+							for="heureArrivee" errorClass="error" /></td>
+				</tr>
+
+
+
 
 				<tr>
 					<td><h:outputLabel for="heureDepart">HeureDepart :</h:outputLabel>
 					</td>
-					<td><h:inputText id="heureDepart" 
-							value="#{modelGarde.courant.heureDepart}" /> <br />
-					<h:message for="heureDepart" errorClass="error" /></td>
+					<td><h:inputText id="heureDepart"
+							value="#{modelGarde.courant.heureDepart}" /> <br /> <h:message
+							for="heureDepart" errorClass="error" /></td>
 				</tr>
 
 				<tr>
 					<td><h:outputLabel for="repas">Repas :</h:outputLabel></td>
-					<td><h:inputText id="repas" 
-							value="#{modelGarde.courant.repas}" /> <br />
-					<h:message for="repas" errorClass="error" /></td>
+					<td><h:inputText id="repas"
+							value="#{modelGarde.courant.repas}" /> <br /> <h:message
+							for="repas" errorClass="error" /></td>
 				</tr>
 			</table>
 
