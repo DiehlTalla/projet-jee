@@ -38,10 +38,7 @@ public class ServiceGarde implements IServiceGarde {
 		daoGarde.modifier(mapper.map(dtoGarde));
 	}
 
-	@Override
-	public DtoCompte retrouver(int idGarde) {
-		return mapper.map(daoGarde.retrouver(idGarde));
-	}
+	
 
 	@Override
 	public List<DtoGarde> listerTout() {
@@ -58,5 +55,10 @@ public class ServiceGarde implements IServiceGarde {
 	public void supprimer(int idGarde) throws ExceptionValidation {
 		daoGarde.supprimer(idGarde);
 		
+	}
+
+	@Override
+	public DtoGarde retrouver(int idGarde) {
+		return mapper.map(daoGarde.retrouver(idGarde));
 	}
 }

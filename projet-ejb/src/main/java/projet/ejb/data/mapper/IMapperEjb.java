@@ -5,10 +5,12 @@ import org.mapstruct.factory.Mappers;
 
 import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoContrat;
+import projet.commun.dto.DtoGarde;
 import projet.commun.dto.DtoParent;
 import projet.commun.dto.DtoTarif;
 import projet.ejb.data.Compte;
 import projet.ejb.data.Contrat;
+import projet.ejb.data.Garde;
 import projet.ejb.data.Parent;
 import projet.ejb.data.Tarif;
 

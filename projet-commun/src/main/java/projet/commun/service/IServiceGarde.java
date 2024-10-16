@@ -2,7 +2,6 @@ package projet.commun.service;
 
 import java.util.List;
 
-import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoGarde;
 import projet.commun.exception.ExceptionValidation;
 
@@ -14,7 +13,7 @@ public interface IServiceGarde {
 
 	void supprimer(int idGarde) throws ExceptionValidation;
 
-	DtoCompte retrouver(int idGarde);
+	DtoGarde retrouver(int idGarde);
 
 	List<DtoGarde> listerTout();
 
