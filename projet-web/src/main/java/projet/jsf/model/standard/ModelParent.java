@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import projet.commun.dto.DtoParent;
 import projet.commun.exception.ExceptionValidation;
+import projet.commun.service.IServiceCompte;
 import projet.commun.service.IServiceParent;
 import projet.jsf.data.Parent;
 import projet.jsf.data.mapper.IMapper;
@@ -28,6 +29,9 @@ public class ModelParent implements Serializable {
 	
 	@EJB
 	private IServiceParent serviceParent;
+	
+//	@Inject
+//	private ModelCompte modelCompte;
 	
 	@Inject
 	private IMapper mapper;
@@ -75,8 +79,11 @@ public class ModelParent implements Serializable {
 	
 	
 	public String validerMiseAJour() {
+//		 modelCompte.validerMiseAJour();
 		try {
 			if (courant.getId() == null) {
+//				courant.getCompte().getId();
+				
 				serviceParent.inserer(mapper.map(courant));
 			}else {
 				serviceParent.modifier(mapper.map(courant));

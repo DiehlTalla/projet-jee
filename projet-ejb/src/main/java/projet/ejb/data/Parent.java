@@ -29,30 +29,30 @@ public class Parent {
 	@Column(name = "prenom")
 	private String prenom;
 
-	@Column(name = "adresse_postale")
-	private String adressePostale;
-
 	@Column(name = "email")
 	private String email;
 	
 	@Column(name = "telephone")
 	private String telephone;
+	
+	@Column(name = "adresse_postale")
+	private String adressePostale;
 
 	public Parent() {
 	}
 
 	
 
-	public Parent(int id, Compte compte, String nom, String prenom, String adressePostale, String email,
-			String telephone) {
+	public Parent(int id, Compte compte, String nom, String prenom, String email,
+			String telephone, String adressePostale) {
 
 		this.id = id;
 		this.compte = compte;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adressePostale = adressePostale;
 		this.email = email;
 		this.telephone = telephone;
+		this.adressePostale = adressePostale;
 
 	}
 
@@ -88,14 +88,6 @@ public class Parent {
 		this.prenom = prenom;
 	}
 
-	public String getAdressePostale() {
-		return adressePostale;
-	}
-
-	public void setAdresse_postale(String adressePostale) {
-		this.adressePostale = adressePostale;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -111,11 +103,27 @@ public class Parent {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
+	
+
+	public String getAdressePostale() {
+		return adressePostale;
+	}
+
+
+
+	public void setAdressePostale(String adressePostale) {
+		this.adressePostale = adressePostale;
+	}
+
+
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,5 +136,10 @@ public class Parent {
 		Parent other = (Parent) obj;
 		return id == other.id;
 	}
+
+
+	
+
+	
 
 }

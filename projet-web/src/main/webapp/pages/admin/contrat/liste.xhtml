@@ -35,7 +35,14 @@
 				<f:facet name="header">
 					<h:outputText value="Date de naissance" />
 				</f:facet>
-				#{item.dateNaissaance}
+				#{item.dateNaissance}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nom du parent" />
+				</f:facet>
+				#{item.parent.nom} #{item.parent.prenom}
 			</h:column>
 			
 			<h:column>
@@ -54,7 +61,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Tarif hauraire" />
+					<h:outputText value="Tarif horaire" />
 				</f:facet>
 				#{item.tarifHoraire}
 			</h:column>
@@ -64,6 +71,20 @@
 					<h:outputText value="Idemnité d'entretien" />
 				</f:facet>
 				#{item.entretien}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Taux horaire" />
+				</f:facet>
+				#{item.tauxHoraire}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Idemnité de repas" />
+				</f:facet>
+				#{item.indemniteRepas}
 			</h:column>
 			
 			<h:column>

@@ -1,6 +1,7 @@
 package projet.ejb.service.standard;
 
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
+import static javax.ejb.TransactionAttributeType.REQUIRED;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoParent;
@@ -33,14 +35,14 @@ public class ServiceParent implements IServiceParent {
 
 			@Override
 			public int inserer(DtoParent dtoParent) throws ExceptionValidation {
-				verifierValiditeDonnees(dtoParent);
+//				verifierValiditeDonnees(dtoParent);
 				int id = daoParent.inserer(mapper.map(dtoParent));
 				return id;
 			}
 
 			@Override
 			public void modifier(DtoParent dtoParent) throws ExceptionValidation {
-				verifierValiditeDonnees(dtoParent);
+//				verifierValiditeDonnees(dtoParent);
 				daoParent.modifier(mapper.map(dtoParent));
 			}
 
@@ -50,13 +52,13 @@ public class ServiceParent implements IServiceParent {
 			}
 
 			@Override
-			@TransactionAttribute(NOT_SUPPORTED)
+//			@TransactionAttribute(NOT_SUPPORTED)
 			public DtoParent retrouver(int idParent) {
 				return mapper.map(daoParent.retrouver(idParent));
 			}
 
 			@Override
-			@TransactionAttribute(NOT_SUPPORTED)
+			@TransactionAttribute(REQUIRED)
 			public List<DtoParent> listerTout() {
 				List<DtoParent> liste = new ArrayList<>();
 				for (Parent parent : daoParent.listerTout()) {

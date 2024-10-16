@@ -68,7 +68,7 @@
 					<td><h:selectOneMenu id="parent"
 							value="#{modelContrat.courant.parent}"
 							converter="#{converterParent}">
-							<f:selectItems value="#{modelParent.listeAvecNull}" var="item"
+							<f:selectItems value="#{modelParent.liste}" var="item"
 								itemLabel="#{item.nom} #{item.prenom}" />
 						</h:selectOneMenu> <br />
 					<h:message for="parent" errorClass="error" /></td>
@@ -116,8 +116,30 @@
 				</td>
 				<td>
 					<h:inputText id="indemnite" size="25" 
-						value="#{modelContrat.courant.indemniteEntretient}" />
+						value="#{modelContrat.courant.entretien}" />
 					<br /><h:message for="indemnite" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="taux">Taux horaire :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="taux" size="25" 
+						value="#{modelContrat.courant.tauxHoraire}" />
+					<br /><h:message for="taux" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="repas">Indemnite repas :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="repas" size="25" 
+						value="#{modelContrat.courant.indemniteRepas}" />
+					<br /><h:message for="repas" errorClass="error"/>
 				</td>
 			</tr>
 			

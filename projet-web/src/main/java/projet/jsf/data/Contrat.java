@@ -46,7 +46,7 @@ public class Contrat implements Serializable {
 	
 	@NotNull(message = "L'indemnité d'entretien doit être renseigné")
 	@PositiveOrZero(message = "L'indemnité d'entretien doit être positif et supérieur à zéro")
-	private BigDecimal indemniteEntretient;
+	private BigDecimal entretien;
 	
 	@NotNull(message = "L'indemnité de repas doit être renseigné")
 	@PositiveOrZero(message = "L'indemnité de repas doit être positif et supérieur à zéro")
@@ -58,7 +58,7 @@ public class Contrat implements Serializable {
 	}
 
 	public Contrat(Integer id, Parent parent, String nom, String prenom, Date dateNaissance, Date debut, Date fin,
-			BigDecimal tarifHoraire, BigDecimal tauxHoraire, BigDecimal indemniteEntretient, BigDecimal indemniteRepas) {
+			BigDecimal tarifHoraire, BigDecimal tauxHoraire, BigDecimal entretien, BigDecimal indemniteRepas) {
 
 		this.id = id;
 		this.parent = parent;
@@ -69,7 +69,7 @@ public class Contrat implements Serializable {
 		this.fin = fin;
 		this.tarifHoraire = tarifHoraire;
 		this.tauxHoraire = tauxHoraire;
-		this.indemniteEntretient = indemniteEntretient;
+		this.entretien = entretien;
 		this.indemniteRepas = indemniteRepas;
 		
 	}
@@ -146,12 +146,12 @@ public class Contrat implements Serializable {
 		this.tauxHoraire = tauxHoraire;
 	}
 
-	public BigDecimal getIndemniteEntretient() {
-		return indemniteEntretient;
+	public BigDecimal getEntretien() {
+		return entretien;
 	}
 
-	public void setIndemniteEntretient(BigDecimal indemniteEntretient) {
-		this.indemniteEntretient = indemniteEntretient;
+	public void setEntretien(BigDecimal entretien) {
+		this.entretien = entretien;
 	}
 
 	public BigDecimal getIndemniteRepas() {
@@ -161,10 +161,6 @@ public class Contrat implements Serializable {
 	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
 	}
-
-	
-
-	
 
 	@Override
 	public int hashCode() {
@@ -180,7 +176,13 @@ public class Contrat implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Contrat other = (Contrat) obj;
-		return id == other.id;
+		return Objects.equals(id, other.id);
 	}
+
+	
+
+	
+
+	
 
 }

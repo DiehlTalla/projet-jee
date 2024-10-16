@@ -9,6 +9,8 @@ import javax.xml.crypto.Data;
 public class DtoContrat implements Serializable {
 
 	
+
+
 	private int id;
 	private String nom;
 	private String prenom;
@@ -17,6 +19,9 @@ public class DtoContrat implements Serializable {
 	private Date fin;
 	private int tarifHoraire;
 	private int entretien;
+	private int tauxHoraire;
+	private int indemniteRepas;
+	private DtoParent parent;
 	
 	
 	public DtoContrat() {
@@ -25,7 +30,7 @@ public class DtoContrat implements Serializable {
 	
 	
 	public DtoContrat(int id, String nom, String prenom, Date dateNaissance, Date debut, Date fin, int tarifHoraire,
-			int entretien) {
+			int entretien, int tauxHoraire,int indemniteRepas, DtoParent parent) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -34,8 +39,13 @@ public class DtoContrat implements Serializable {
 		this.fin = fin;
 		this.tarifHoraire = tarifHoraire;
 		this.entretien = entretien;
+		this.tauxHoraire = tauxHoraire;
+		this.indemniteRepas = indemniteRepas;
+		this.parent = parent;
 	}
 
+	
+	
 
 	public int getId() {
 		return id;
@@ -118,5 +128,33 @@ public class DtoContrat implements Serializable {
 	
 	
 	
+	public int getTauxHoraire() {
+		return tauxHoraire;
+	}
+
+
+	public void setTauxHoraire(int tauxHoraire) {
+		this.tauxHoraire = tauxHoraire;
+	}
+
+
+	public int getIndemniteRepas() {
+		return indemniteRepas;
+	}
+
+
+	public void setIndemniteRepas(int indemniteRepas) {
+		this.indemniteRepas = indemniteRepas;
+	}
+
+
+	public DtoParent getParent() {
+		return parent;
+	}
+
+
+	public void setParent(DtoParent parent) {
+		this.parent = parent;
+	}
 	
 }

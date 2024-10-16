@@ -12,19 +12,21 @@ public class DtoParent implements Serializable {
 	private String adressePostale;
 	private String email;
 	private String telephone;
+	private DtoCompte compte;
 	
 	
 	public DtoParent() {
 	}
 
 
-	public DtoParent(int id, String nom, String prenom, String adressePostale, String email, String telephone) {
+	public DtoParent(int id, String nom, String prenom, String adressePostale, String email, String telephone, DtoCompte compte) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adressePostale = adressePostale;
 		this.email = email;
 		this.telephone = telephone;
+		this.compte = compte;
 	}
 
 
@@ -85,6 +87,16 @@ public class DtoParent implements Serializable {
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+
+	public DtoCompte getCompte() {
+		return compte;
+	}
+
+
+	public void setCompte(DtoCompte compte) {
+		this.compte = compte;
 	}
 	
 	

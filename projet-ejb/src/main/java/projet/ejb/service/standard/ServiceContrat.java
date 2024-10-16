@@ -1,6 +1,7 @@
 package projet.ejb.service.standard;
 
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
+import static javax.ejb.TransactionAttributeType.REQUIRED;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoContrat;
@@ -34,14 +36,14 @@ public class ServiceContrat implements IServiceContrat {
 
 		@Override
 		public int inserer(DtoContrat dtoContrat) throws ExceptionValidation {
-			verifierValiditeDonnees(dtoContrat);
+//			verifierValiditeDonnees(dtoContrat);
 			int id = daoContrat.inserer(mapper.map(dtoContrat));
 			return id;
 		}
 
 		@Override
 		public void modifier(DtoContrat dtoContrat) throws ExceptionValidation {
-			verifierValiditeDonnees(dtoContrat);
+//			verifierValiditeDonnees(dtoContrat);
 			daoContrat.modifier(mapper.map(dtoContrat));
 		}
 
@@ -51,13 +53,13 @@ public class ServiceContrat implements IServiceContrat {
 		}
 
 		@Override
-		@TransactionAttribute(NOT_SUPPORTED)
+//		@TransactionAttribute(NOT_SUPPORTED)
 		public DtoContrat retrouver(int idContrat) {
 			return mapper.map(daoContrat.retrouver(idContrat));
 		}
 
 		@Override
-		@TransactionAttribute(NOT_SUPPORTED)
+//		@TransactionAttribute(REQUIRED)
 		public List<DtoContrat> listerTout() {
 			List<DtoContrat> liste = new ArrayList<>();
 			for (Contrat contrat : daoContrat.listerTout()) {
