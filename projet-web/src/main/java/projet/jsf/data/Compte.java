@@ -8,36 +8,37 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
-public class Compte implements Serializable  {
+public class Compte implements Serializable {
 
-	//-------
+	// -------
 	// Champs
-	//-------
-	
-	private Integer		id;
-	
-	@NotBlank( message = "Le pseudo doit être renseigné")
-	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
-	private String		pseudo;
+	// -------
 
-	@NotBlank( message = "Le mot de passe doit être renseigné")
-	@Size(max=25, message = "Valeur trop longue pour le mot de passe : 25 car. maxi" )
-	private String		motDePasse;
+	private Integer id;
 
-	@NotBlank( message = "L'adresse e-mail doit être renseigné")
-	@Size(max=100, message = "Valeur trop longue pour l'adresse e-mail : 100 car. maxi" )
-	@Email( message = "Adresse e-mail invalide" )
-	private String		email;
-	
-	private boolean	flagAdmin;
+	@NotBlank(message = "Le pseudo doit être renseigné")
 
-	//-------
+	@Size(max = 25, min = 3, message = "Valeur comprise entre 3 et 25 caracteres")
+	private String pseudo;
+
+	@NotBlank(message = "Le mot de passe doit être renseigné")
+	@Size(max = 25, min = 3, message = "Valeur comprise entre 3 et 25 caracteres")
+	private String motDePasse;
+
+	@NotBlank(message = "L'adresse e-mail doit être renseigné")
+	@Size(max = 100, message = "Valeur trop longue pour l'adresse e-mail : 100 car. maxi")
+	@Email(message = "Adresse e-mail invalide")
+	private String email;
+
+	private boolean flagAdmin;
+
+	// -------
 	// Constructeurs
-	//-------
-	
+	// -------
+
 	public Compte() {
 	}
-	
+
 	public Compte(Integer id, String pseudo, String motDePasse, String email, boolean flagAdmin) {
 		super();
 		this.id = id;
@@ -47,14 +48,14 @@ public class Compte implements Serializable  {
 		this.flagAdmin = flagAdmin;
 	}
 
-	//-------
+	// -------
 	// Getters & setters
-	//-------
+	// -------
 
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -74,26 +75,26 @@ public class Compte implements Serializable  {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public boolean isFlagAdmin() {
 		return flagAdmin;
 	}
-	
+
 	public void setFlagAdmin(boolean flagAdmin) {
 		this.flagAdmin = flagAdmin;
 	}
 
-	//-------
+	// -------
 	// hashCode() & equals()
-	//-------
+	// -------
 
 	@Override
 	public int hashCode() {
@@ -111,5 +112,5 @@ public class Compte implements Serializable  {
 		var other = (Compte) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

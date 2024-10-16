@@ -31,14 +31,14 @@ public class ServiceCompte implements IServiceCompte {
 
 	@Override
 	public int inserer(DtoCompte dtoCompte) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCompte);
+		//verifierValiditeDonnees(dtoCompte);
 		int id = daoCompte.inserer(mapper.map(dtoCompte));
 		return id;
 	}
 
 	@Override
 	public void modifier(DtoCompte dtoCompte) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCompte);
+		//verifierValiditeDonnees(dtoCompte);
 		daoCompte.modifier(mapper.map(dtoCompte));
 	}
 
@@ -72,6 +72,7 @@ public class ServiceCompte implements IServiceCompte {
 		if (dtoCompte.getPseudo() == null || dtoCompte.getPseudo().isEmpty()) {
 			message.append("\nLe pseudo est absent.");
 		} else if (dtoCompte.getPseudo().length() < 3) {
+			
 			message.append("\nLe pseudo est trop court.");
 		} else if (dtoCompte.getPseudo().length() > 25) {
 			message.append("\nLe pseudo est trop long.");
