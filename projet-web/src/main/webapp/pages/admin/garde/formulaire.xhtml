@@ -36,21 +36,24 @@
 
 				<tr>
 
-					<td><h:outputLabel for="nom">HeureArrivee :</h:outputLabel></td>
-					<td><h:inputText id="heureArrivee"
-							value="#{modelGarde.courant.heureArrivee}" /> <br /> <h:message
-							for="heureArrivee" errorClass="error" /></td>
+					<td><h:outputLabel for="heureArrivee">HeureArrivee :</h:outputLabel></td>
+					<td>
+						<p:calendar id="heureArrivee" value="#{modelGarde.courant.heureArrivee}" pattern="HH:mm" timeOnly="true" />
+						 <br /> 
+						 <h:message for="heureArrivee" errorClass="error" />
+					</td>
 				</tr>
 
 
 
 
 				<tr>
-					<td><h:outputLabel for="heureDepart">HeureDepart :</h:outputLabel>
+					<td><h:outputLabel for="heureDepart">HeureDepart :</h:outputLabel></td>
+					<td>
+						<p:calendar id="heureDepart" value="#{modelGarde.courant.heureDepart}" pattern="HH:mm" timeOnly="true" />
+						 <br /> 
+						 <h:message for="heureDepart" errorClass="error" />
 					</td>
-					<td><h:inputText id="heureDepart"
-							value="#{modelGarde.courant.heureDepart}" /> <br /> <h:message
-							for="heureDepart" errorClass="error" /></td>
 				</tr>
 
 				<tr>
