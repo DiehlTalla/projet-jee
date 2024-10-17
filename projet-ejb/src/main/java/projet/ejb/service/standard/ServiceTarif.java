@@ -23,6 +23,7 @@ public class ServiceTarif implements IServiceTarif {
 	@Inject
 	private IMapperEjb mapper;
 	
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private IDaoTarif daoTarif;
 	
