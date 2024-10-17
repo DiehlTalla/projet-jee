@@ -49,6 +49,8 @@ public interface IMapperEjb {
 	Garde map(DtoGarde source);
 
 	DtoGarde map(Garde source);
+	
+	
 
 
 	

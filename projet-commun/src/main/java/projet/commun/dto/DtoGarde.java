@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class DtoGarde implements Serializable {
 	private int id;
 	private DtoContrat contrat;
@@ -59,12 +60,12 @@ public class DtoGarde implements Serializable {
 		this.heureArrivee = heureArrivee;
 	}
 
-	public LocalTime getHeurDepart() {
+	public LocalTime getHeureDepart() {
 		return heureDepart;
 	}
 
-	public void setHeurDepart(LocalTime heurDepart) {
-		this.heureDepart = heurDepart;
+	public void setHeureDepart(LocalTime heureDepart) {
+		this.heureDepart = heureDepart;
 	}
 
 	public Boolean getRepas() {
