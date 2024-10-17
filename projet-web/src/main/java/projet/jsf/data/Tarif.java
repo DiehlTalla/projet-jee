@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @SuppressWarnings("serial")
@@ -11,15 +12,15 @@ public class Tarif implements Serializable {
 	
 	private Integer id;
 	
-	@NotBlank(message = "Le tarif horaire doit être renseigné")
+	@NotNull(message = "Le tarif horaire doit être renseigné")
 	@PositiveOrZero(message = "Le tarif doit être positif ou nul")
 	private BigDecimal tarifHoraire;
 	
-	@NotBlank(message = "Le minimum journalier doit être renseigné")
+	@NotNull(message = "Le minimum journalier doit être renseigné")
 	@PositiveOrZero(message = "Ce champ doit être positif ou nul")
 	private BigDecimal minimumJournalier;
 	
-	@NotBlank(message = "L'indemnité de repas doit être renseigné")
+	@NotNull(message = "L'indemnité de repas doit être renseigné")
 	@PositiveOrZero(message = "Ce champ doit être positif ou nul")
 	private BigDecimal indemniteRepas;
 	
