@@ -7,14 +7,10 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import projet.commun.dto.DtoCompte;
-import projet.commun.dto.DtoContrat;
 import projet.commun.dto.DtoGarde;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceGarde;
 import projet.ejb.dao.IDaoGarde;
-import projet.ejb.dao.jpa.DaoGarde;
-import projet.ejb.data.Contrat;
 import projet.ejb.data.Garde;
 import projet.ejb.data.mapper.IMapperEjb;
 
