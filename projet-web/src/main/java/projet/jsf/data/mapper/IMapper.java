@@ -7,6 +7,7 @@ import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoContrat;
 import projet.commun.dto.DtoGarde;
 import projet.commun.dto.DtoParent;
+import projet.commun.dto.DtoTarif;
 import projet.jsf.data.Compte;
 import projet.jsf.data.Contrat;
 import projet.jsf.data.Parent;
