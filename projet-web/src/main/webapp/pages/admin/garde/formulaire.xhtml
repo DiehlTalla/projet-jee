@@ -33,6 +33,20 @@
 						<!-- 						value="#{modelGarde.courant.date}" /> --> <br />
 					<h:message for="date" errorClass="error" /></td>
 				</tr>
+				
+				
+				<tr>
+					<td><h:outputLabel for="enfant">Enfant gardé :</h:outputLabel>
+					</td>
+					<td><h:selectOneMenu id="enfant"
+							value="#{modelGarde.courant.contrat}"
+							converter="#{converterContrat}">
+							<f:selectItems value="#{modelContrat.liste}" var="item"
+								itemLabel="#{item.nom} #{item.prenom}" />
+						</h:selectOneMenu> <br />
+					<h:message for="enfant" errorClass="error" /></td>
+				</tr>
+				
 
 				<tr>
 

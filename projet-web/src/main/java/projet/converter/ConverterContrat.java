@@ -11,11 +11,13 @@ import javax.inject.Named;
 
 import projet.jsf.data.Contrat;
 
+
+@Named
+@RequestScoped
 public class ConverterContrat implements Converter<Contrat> {
 
 	@SuppressWarnings("unchecked")
-	@Named
-	@RequestScoped
+	@Override
 	public Contrat getAsObject(FacesContext context, UIComponent uic, String value) {
 		if (value == null || value.isEmpty()) {
 			return null;
