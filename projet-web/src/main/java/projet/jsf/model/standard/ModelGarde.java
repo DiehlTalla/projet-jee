@@ -1,6 +1,7 @@
 package projet.jsf.model.standard;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class ModelGarde implements Serializable {
 	private List<Garde> liste;
 	private Garde courant;
 	
+	private List<Garde> listeP;
+	
+	private long duree;
+	
 	@EJB
 	private IServiceGarde serviceGarde;
 
@@ -39,6 +44,18 @@ public class ModelGarde implements Serializable {
 		}
 		return liste;
 	}
+	
+	
+	public List<Garde> getListeP() {
+		if (listeP == null) {
+			listeP = new ArrayList<>();
+			for (DtoGarde dto : serviceGarde.listerParContrat(courant.getId())) {
+				listeP.add(mapper.map(dto));
+			}
+		}
+		return listeP;
+	}
+	
 
 	public Garde getCourant() {
 		if (courant == null) {
@@ -86,5 +103,15 @@ public class ModelGarde implements Serializable {
 		}
 		return null;
 	}
+	
+	
+	public long calculDuree() {
+        Duration dur = Duration.between(courant.getHeureArrivee(), courant.getHeureDepart());
+        long hours = dur.toHours();
+        long minutes = dur.toMinutes() % 60;
+        duree = hours+minutes;
+        return duree;
+	}
+	
 
 }

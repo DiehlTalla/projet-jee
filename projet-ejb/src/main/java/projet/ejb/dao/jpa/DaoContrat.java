@@ -54,4 +54,13 @@ public class DaoContrat implements IDaoContrat {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Contrat> listerParParent(int idParent) {
+		em.clear();
+		var jpql = "SELECT c FROM Contrat c WHERE c.idParent = :idParent ORDER BY c.nom";
+		var query = em.createQuery(jpql, Contrat.class);
+		query.setParameter("idParent", idParent);
+		return query.getResultList();
+	}
+
 }

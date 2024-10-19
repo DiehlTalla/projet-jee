@@ -16,6 +16,7 @@ public interface IDaoGarde  {
 	Garde		retrouver( int idGarde );
 	
 	List<Garde> listerTout();
-	
+
+	List<Garde> 	listerParContrat(int idContrat);
 
 }

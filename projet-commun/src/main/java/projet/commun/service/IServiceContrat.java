@@ -16,5 +16,7 @@ public interface IServiceContrat {
 	DtoContrat	retrouver( int idContrat );
 
 	List<DtoContrat>	listerTout();
+	
+	List<DtoContrat> 	listerParParent(int idParent);
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoGarde;
+import projet.ejb.data.Contrat;
 import projet.ejb.data.Garde;
 
 @Stateless
@@ -50,6 +51,16 @@ public class DaoGarde implements IDaoGarde {
 		em.clear();
 		var jpql = "SELECT g FROM Garde g ";
 		var query = em.createQuery(jpql, Garde.class);
+		return query.getResultList();
+	}
+
+
+	@Override
+	public List<Garde> listerParContrat(int idContrat) {
+		em.clear();
+		var jpql = "SELECT c FROM Garde c WHERE c.idContrat = :idContrat ORDER BY c.nom";
+		var query = em.createQuery(jpql, Garde.class);
+		query.setParameter("idContrat", idContrat);
 		return query.getResultList();
 	}
 

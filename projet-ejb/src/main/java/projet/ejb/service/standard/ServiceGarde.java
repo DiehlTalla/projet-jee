@@ -57,4 +57,13 @@ public class ServiceGarde implements IServiceGarde {
 	public DtoGarde retrouver(int idGarde) {
 		return mapper.map(daoGarde.retrouver(idGarde));
 	}
+
+	@Override
+	public List<DtoGarde> listerParContrat(int idContrat) {
+		List<DtoGarde> listeP = new ArrayList<>();
+		for (Garde garde : daoGarde.listerParContrat(idContrat)) {
+			listeP.add(mapper.map(garde));
+		}
+		return listeP;
+	}
 }

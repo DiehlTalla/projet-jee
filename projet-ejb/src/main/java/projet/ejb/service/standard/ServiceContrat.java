@@ -61,6 +61,16 @@ public class ServiceContrat implements IServiceContrat {
 			}
 			return liste;
 		}
+		
+		
+		@Override
+		public List<DtoContrat> listerParParent(int idParent) {
+			List<DtoContrat> listeP = new ArrayList<>();
+			for (Contrat contrat : daoContrat.listerParParent(idParent)) {
+				listeP.add(mapper.map(contrat));
+			}
+			return listeP;
+		}
 
 		// Méthodes auxiliaires
 

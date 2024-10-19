@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">>>
+	xmlns:p="http://primefaces.org/ui">
 
 	 <f:metadata>
 		<f:viewParam name="id" value="#{modelContrat.courant.id}" />
@@ -113,84 +113,70 @@
 			</table>
 
 			<br />
+			
+		<h:dataTable styleClass="liste" value="#{modelGarde.listeP}" var="item" rowClasses="impair, pair" columnClasses="left,left,center">
+    
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Identifiant" />
+        </f:facet>
+        <h:outputText value="#{item.id}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Date" />
+        </f:facet>
+        <h:outputText value="#{item.date}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Nom de l'enfant" />
+        </f:facet>
+        <h:outputText value="#{item.contrat.nom} #{item.contrat.prenom}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Heure Arrivée" />
+        </f:facet>
+        <h:outputText value="#{item.heureArrivee}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Heure Départ" />
+        </f:facet>
+        <h:outputText value="#{item.heureDepart}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Repas" />
+        </f:facet>
+        <h:outputText value="#{item.repas}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Actions" />
+        </f:facet>
+        <h:button outcome="formulaire?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
+        <h:commandButton action="#{modelGarde.supprimer(item)}" value="Supprimer" onclick="return confirm('Confirmez-vous la suppression ?')" image="#{resource['images:supprimer.png']}" title="Supprimer" styleClass="image-action">
+            <f:ajax render="@form" execute="@form" />
+        </h:commandButton>
+    </h:column>
+
+</h:dataTable>
+		
+			
+			
 			<h:commandButton value="Valider"
 				action="#{modelContrat.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="contrats" />
 		</h:form>
-
-
-		<h:dataTable styleClass="liste" value="#{modelGarde.listeParContrat}" var="item"
-			rowClasses="impair, pair" columnClasses="left,left,center">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="identifiant" />
-				</f:facet>
-				#{item.id}
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date" />
-				</f:facet>
-				#{item.date}
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nom de l'enfant" />
-				</f:facet>
-				#{item.contrat.nom} #{item.contrat.prenom}
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="heureArrivee " />
-				</f:facet>
-				#{item.heureArrivee } 
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="heureDepart" />
-				</f:facet>
-				#{item.heureDepart}
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="repas" />
-				</f:facet>
-				#{item.repas} 
-			</h:column>
-			<!-- 
-
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="rémunération" />
-					</f:facet>
-				#{item.}  -->
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Actions" />
-				</f:facet>
-				<h:button outcome="formulaire?id=#{item.id}"
-					image="#{ resource['images:modifier.png'] }" title="Modifier"
-					styleClass="image-action" />
-				<h:commandButton action="#{modelGarde.supprimer(item)}"
-					value="Supprimer"
-					onclick="return confirm('Confirmez-vous la suppression ?')"
-					image="#{ resource['images:supprimer.png'] }" title="Supprimer"
-					styleClass="image-action">
-					<f:ajax render="@form" execute="@form" />
-				</h:commandButton>
-			</h:column>
-
-		</h:dataTable>
+		
 
 	</ui:define>
 

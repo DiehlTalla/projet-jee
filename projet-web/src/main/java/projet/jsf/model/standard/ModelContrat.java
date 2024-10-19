@@ -27,6 +27,8 @@ public class ModelContrat implements Serializable {
 	private List<Contrat> liste;
 	private Contrat courant;
 	
+	private List<Contrat> listeP;
+	
 	@EJB
 	private IServiceContrat serviceContrat;
 	
@@ -42,6 +44,17 @@ public class ModelContrat implements Serializable {
 			}
 		}
 		return liste;
+	}
+	
+	
+	public List<Contrat> getListeP() {
+		if (listeP == null) {
+			listeP = new ArrayList<>();
+			for (DtoContrat dto : serviceContrat.listerParParent(courant.getId())) {
+				listeP.add(mapper.map(dto));
+			}
+		}
+		return listeP;
 	}
 
 	public Contrat getCourant() {
