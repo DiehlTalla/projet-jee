@@ -1,155 +1,196 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/template/page-standard.xhtml"
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets"
-     xmlns:p="http://primefaces.org/ui">>>
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">>>
 
 	 <f:metadata>
-		 <f:viewParam name="id" value="#{modelContrat.courant.id}" />
-		 <f:viewAction action="#{modelContrat.actualiserCourant()}" />
-	 </f:metadata>
+		<f:viewParam name="id" value="#{modelContrat.courant.id}" />
+		<f:viewAction action="#{modelContrat.actualiserCourant()}" />
+	</f:metadata>
 
-    <ui:define name="titre">Contrat</ui:define>
+	<ui:define name="titre">Contrat</ui:define>
 
-    <ui:define name="contenu">
+	<ui:define name="contenu">
 
-	<h:form>
-	
-		<table class="form">
-			<tr>
-				<td>
-					<h:outputLabel for="id">Id :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelContrat.courant.id}" />
-					<br /><h:message for="id" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="nom">Nom de l'enfant :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="nom" size="25" 
-						value="#{modelContrat.courant.nom}" />
-					<br /><h:message for="nom" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="prenom">Prénom de l'enfant :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="prenom" size="25" 
-						value="#{modelContrat.courant.prenom}" />
-					<br /><h:message for="prenom" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="date">Date de naissance :</h:outputLabel>				
-				</td>
-				<td>
-					<p:calendar id="date" value="#{modelContrat.courant.dateNaissance}" pattern="dd/MM/yyyy" showButtonPanel="true" />
-<!-- 					<h:inputText id="date" size="25"  -->
-<!-- 						value="#{modelContrat.courant.dateNaissance}" /> -->
-					<br /><h:message for="date" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-					<td><h:outputLabel for="parent">Parent :</h:outputLabel>
+		<h:form>
+
+			<table class="form">
+				<tr>
+					<td><h:outputLabel for="id">Id :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelContrat.courant.id}" /> <br />
+					<h:message for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="nom">Nom de l'enfant :</h:outputLabel>
 					</td>
+					<td><h:inputText id="nom" size="25"
+							value="#{modelContrat.courant.nom}" /> <br />
+					<h:message for="nom" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="prenom">Prénom de l'enfant :</h:outputLabel>
+					</td>
+					<td><h:inputText id="prenom" size="25"
+							value="#{modelContrat.courant.prenom}" /> <br />
+					<h:message for="prenom" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="date">Date de naissance :</h:outputLabel>
+					</td>
+					<td><p:calendar id="date"
+							value="#{modelContrat.courant.dateNaissance}"
+							pattern="dd/MM/yyyy" showButtonPanel="true" /> <!-- 					<h:inputText id="date" size="25"  -->
+						<!-- 						value="#{modelContrat.courant.dateNaissance}" /> --> <br />
+					<h:message for="date" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="parent">Parent :</h:outputLabel></td>
 					<td><h:selectOneMenu id="parent"
 							value="#{modelContrat.courant.parent}"
 							converter="#{converterParent}">
 							<f:selectItems value="#{modelParent.liste}" var="item"
 								itemLabel="#{item.nom} #{item.prenom}" />
-						</h:selectOneMenu> <br />
-					<h:message for="parent" errorClass="error" /></td>
+						</h:selectOneMenu> <br /> <h:message for="parent" errorClass="error" /></td>
 				</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="debut">Date de début :</h:outputLabel>				
-				</td>
-				<td>
-					<p:calendar id="debut" value="#{modelContrat.courant.debut}" pattern="dd/MM/yyyy" showButtonPanel="true" />
-<!-- 					<h:inputText id="debut" size="25"  -->
-<!-- 						value="#{modelContrat.courant.debut}" /> -->
-					<br /><h:message for="debut" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="fin">Date de fin :</h:outputLabel>				
-				</td>
-				<td>
-					<p:calendar id="fin" value="#{modelContrat.courant.fin}" pattern="dd/MM/yyyy" showButtonPanel="true" />
-<!-- 					<h:inputText id="fin" size="25"  -->
-<!-- 						value="#{modelContrat.courant.fin}" /> -->
-					<br /><h:message for="fin" errorClass="error"/>
-				</td>
-			</tr>
-			<p:messages id="messages" showDetail="true" autoUpdate="true" />
-			
-			<tr>
-				<td>
-					<h:outputLabel for="tarif">Tarif horaire :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="tarif" size="25" 
-						value="#{modelContrat.courant.tarifHoraire}" />
-					<br /><h:message for="tarif" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="indemnite">Indemnité d'entretien :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="indemnite" size="25" 
-						value="#{modelContrat.courant.entretien}" />
-					<br /><h:message for="indemnite" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="taux">Taux horaire :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="taux" size="25" 
-						value="#{modelContrat.courant.tauxHoraire}" />
-					<br /><h:message for="taux" errorClass="error"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<h:outputLabel for="repas">Indemnite repas :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="repas" size="25" 
-						value="#{modelContrat.courant.indemniteRepas}" />
-					<br /><h:message for="repas" errorClass="error"/>
-				</td>
-			</tr>
-			
-		</table>
 
-		<br /> 
-		<h:commandButton value="Valider" 
-			action="#{modelContrat.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="contrats" />
-	</h:form>
+				<tr>
+					<td><h:outputLabel for="debut">Date de début :</h:outputLabel>
+					</td>
+					<td><p:calendar id="debut"
+							value="#{modelContrat.courant.debut}" pattern="dd/MM/yyyy"
+							showButtonPanel="true" /> <!-- 					<h:inputText id="debut" size="25"  -->
+						<!-- 						value="#{modelContrat.courant.debut}" /> --> <br />
+					<h:message for="debut" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="fin">Date de fin :</h:outputLabel></td>
+					<td><p:calendar id="fin" value="#{modelContrat.courant.fin}"
+							pattern="dd/MM/yyyy" showButtonPanel="true" /> <!-- 					<h:inputText id="fin" size="25"  -->
+						<!-- 						value="#{modelContrat.courant.fin}" /> --> <br />
+					<h:message for="fin" errorClass="error" /></td>
+				</tr>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+				<tr>
+					<td><h:outputLabel for="tarif">Tarif horaire :</h:outputLabel>
+					</td>
+					<td><h:inputText id="tarif" size="25"
+							value="#{modelContrat.courant.tarifHoraire}" /> <br />
+					<h:message for="tarif" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="indemnite">Indemnité d'entretien :</h:outputLabel>
+					</td>
+					<td><h:inputText id="indemnite" size="25"
+							value="#{modelContrat.courant.entretien}" /> <br />
+					<h:message for="indemnite" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="taux">Taux horaire :</h:outputLabel></td>
+					<td><h:inputText id="taux" size="25"
+							value="#{modelContrat.courant.tauxHoraire}" /> <br />
+					<h:message for="taux" errorClass="error" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="repas">Indemnite repas :</h:outputLabel>
+					</td>
+					<td><h:inputText id="repas" size="25"
+							value="#{modelContrat.courant.indemniteRepas}" /> <br />
+					<h:message for="repas" errorClass="error" /></td>
+				</tr>
+
+			</table>
+
+			<br />
+			<h:commandButton value="Valider"
+				action="#{modelContrat.validerMiseAJour()}" />
+			<h:button value="Retour" outcome="contrats" />
+		</h:form>
+
+
+		<h:dataTable styleClass="liste" value="#{modelGarde.listeParContrat}" var="item"
+			rowClasses="impair, pair" columnClasses="left,left,center">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="identifiant" />
+				</f:facet>
+				#{item.id}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date" />
+				</f:facet>
+				#{item.date}
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nom de l'enfant" />
+				</f:facet>
+				#{item.contrat.nom} #{item.contrat.prenom}
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="heureArrivee " />
+				</f:facet>
+				#{item.heureArrivee } 
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="heureDepart" />
+				</f:facet>
+				#{item.heureDepart}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="repas" />
+				</f:facet>
+				#{item.repas} 
+			</h:column>
+			<!-- 
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="rémunération" />
+					</f:facet>
+				#{item.}  -->
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actions" />
+				</f:facet>
+				<h:button outcome="formulaire?id=#{item.id}"
+					image="#{ resource['images:modifier.png'] }" title="Modifier"
+					styleClass="image-action" />
+				<h:commandButton action="#{modelGarde.supprimer(item)}"
+					value="Supprimer"
+					onclick="return confirm('Confirmez-vous la suppression ?')"
+					image="#{ resource['images:supprimer.png'] }" title="Supprimer"
+					styleClass="image-action">
+					<f:ajax render="@form" execute="@form" />
+				</h:commandButton>
+			</h:column>
+
+		</h:dataTable>
 
 	</ui:define>
 
