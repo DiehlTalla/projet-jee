@@ -15,7 +15,7 @@ import projet.ejb.data.Tarif;
 
 @Local
 @Stateless
-@TransactionAttribute(MANDATORY)
+//@TransactionAttribute(MANDATORY)
 public class DaoTarif implements IDaoTarif {
 
 	@PersistenceContext

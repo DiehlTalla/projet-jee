@@ -17,7 +17,7 @@ import projet.ejb.data.Parent;
 
 @Stateless
 @Local
-@TransactionAttribute(MANDATORY)
+//@TransactionAttribute(MANDATORY)
 public class DaoParent implements IDaoParent {
 	
 	@PersistenceContext

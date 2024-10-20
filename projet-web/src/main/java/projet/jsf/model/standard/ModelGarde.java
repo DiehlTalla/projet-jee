@@ -49,7 +49,7 @@ public class ModelGarde implements Serializable {
 	public List<Garde> getListeP() {
 		if (listeP == null) {
 			listeP = new ArrayList<>();
-			for (DtoGarde dto : serviceGarde.listerParContrat(courant.getId())) {
+			for (DtoGarde dto : serviceGarde.listerParContrat(courant.getContrat().getId())) {
 				listeP.add(mapper.map(dto));
 			}
 		}

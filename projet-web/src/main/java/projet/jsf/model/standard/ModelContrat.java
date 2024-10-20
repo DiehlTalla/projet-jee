@@ -14,8 +14,11 @@ import javax.inject.Named;
 import projet.commun.dto.DtoContrat;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceContrat;
+import projet.commun.service.IServiceGarde;
+import projet.jsf.data.Compte;
 import projet.jsf.data.Contrat;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @SuppressWarnings("serial")
@@ -27,7 +30,14 @@ public class ModelContrat implements Serializable {
 	private List<Contrat> liste;
 	private Contrat courant;
 	
-	private List<Contrat> listeP;
+	@Inject
+	private CompteActif compteActif;
+	
+	@SuppressWarnings("cdi-ambiguous-dependency")
+	@Inject
+	private IServiceGarde serviceGarde;
+	
+//	private List<Contrat> listeP;
 	
 	@EJB
 	private IServiceContrat serviceContrat;
@@ -39,23 +49,29 @@ public class ModelContrat implements Serializable {
 	public List<Contrat> getListe() {
 		if (liste == null) {
 			liste = new ArrayList<>();
-			for (DtoContrat dto : serviceContrat.listerTout()) {
-				liste.add(mapper.map(dto));
+			if (compteActif.isAdmin()) {
+				for (DtoContrat dto : serviceContrat.listerTout()) {
+					liste.add(mapper.map(dto));
+				}
+			}else {
+				for (DtoContrat dto : serviceContrat.listerParCompte(compteActif.getId())) {
+					liste.add(mapper.map(dto));
+				}
 			}
 		}
 		return liste;
 	}
 	
-	
-	public List<Contrat> getListeP() {
-		if (listeP == null) {
-			listeP = new ArrayList<>();
-			for (DtoContrat dto : serviceContrat.listerParParent(courant.getId())) {
-				listeP.add(mapper.map(dto));
-			}
-		}
-		return listeP;
-	}
+//	
+//	public List<Contrat> getListeP() {
+//		if (listeP == null) {
+//			listeP = new ArrayList<>();
+//			for (DtoContrat dto : serviceContrat.listerParParent(courant.getId())) {
+//				listeP.add(mapper.map(dto));
+//			}
+//		}
+//		return listeP;
+//	}
 
 	public Contrat getCourant() {
 		if (courant == null) {
@@ -67,6 +83,7 @@ public class ModelContrat implements Serializable {
 	
 	public String actualiserCourant() {
 		if (courant != null) {
+			serviceGarde.listerParContrat(courant.getId());
 			DtoContrat dto = serviceContrat.retrouver(courant.getId());
 			if (dto == null) {
 				UtilJsf.messageError("Le contrat demandé n'existe pas");
@@ -85,6 +102,7 @@ public class ModelContrat implements Serializable {
 			if (courant.getId() == null) {
 				serviceContrat.inserer(mapper.map(courant));
 			}else {
+				
 				serviceContrat.modifier(mapper.map(courant));
 			}
 			UtilJsf.messageError("Mise à jour effectuée avec succès");

@@ -19,4 +19,6 @@ public interface IServiceContrat {
 	
 	List<DtoContrat> 	listerParParent(int idParent);
 
+	List<DtoContrat> listerParCompte(int idParent);
+
 }

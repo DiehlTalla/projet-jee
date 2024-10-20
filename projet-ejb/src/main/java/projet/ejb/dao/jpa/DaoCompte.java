@@ -18,7 +18,7 @@ import projet.ejb.data.Compte;
 
 @Stateless
 @Local
-@TransactionAttribute( MANDATORY )
+//@TransactionAttribute( MANDATORY )
 public class DaoCompte implements IDaoCompte {
 
 	

@@ -16,7 +16,7 @@ import projet.ejb.data.Garde;
 
 @Stateless
 @Local
-@TransactionAttribute(MANDATORY)
+//@TransactionAttribute(MANDATORY)
 public class DaoGarde implements IDaoGarde {
 	
 	@PersistenceContext
@@ -58,7 +58,7 @@ public class DaoGarde implements IDaoGarde {
 	@Override
 	public List<Garde> listerParContrat(int idContrat) {
 		em.clear();
-		var jpql = "SELECT c FROM Garde c WHERE c.idContrat = :idContrat ORDER BY c.nom";
+		var jpql = "SELECT g FROM Garde g WHERE g.contrat.id = :idContrat";
 		var query = em.createQuery(jpql, Garde.class);
 		query.setParameter("idContrat", idContrat);
 		return query.getResultList();

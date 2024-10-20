@@ -17,7 +17,7 @@ import projet.ejb.data.Contrat;
 
 @Stateless
 @Local
-@TransactionAttribute(MANDATORY)
+//@TransactionAttribute(MANDATORY)
 public class DaoContrat implements IDaoContrat {
 	
 	@PersistenceContext
@@ -60,6 +60,15 @@ public class DaoContrat implements IDaoContrat {
 		var jpql = "SELECT c FROM Contrat c WHERE c.idParent = :idParent ORDER BY c.nom";
 		var query = em.createQuery(jpql, Contrat.class);
 		query.setParameter("idParent", idParent);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Contrat> listerParCompte(int idCompte){
+		em.clear();
+		var jpql = "SELECT c FROM Contrat c WHERE c.parent.compte.id = :idCompte";
+		var query = em.createQuery(jpql, Contrat.class);
+		query.setParameter("idCompte", idCompte);
 		return query.getResultList();
 	}
 

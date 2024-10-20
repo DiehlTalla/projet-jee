@@ -25,14 +25,12 @@
 <div id="header">
 	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
 	<h:form rendered="#{compteActif.loggedIn}">
-		<h:link outcome="comptes" value="Voir les contrats" rendered="#{compteActif.loggedIn }" />
-		<h:panelGroup rendered="#{compteActif.admin}">
 			<h:link outcome="contrats" value="Contrats"  />
+		<h:panelGroup rendered="#{compteActif.admin}">
 			<h:link outcome="comptes" value="Comptes"  />
 			<h:link outcome="parents" value="Parents"  />
 			<h:link outcome="gardes" value="Gardes" />
 			<h:link outcome="tarifs" value="Tarifs" />
-			
 		</h:panelGroup>
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
 	</h:form>
