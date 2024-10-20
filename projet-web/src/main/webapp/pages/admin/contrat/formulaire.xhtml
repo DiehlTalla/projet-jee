@@ -114,48 +114,48 @@
 
 			<br />
 			
-		<h:dataTable styleClass="liste" value="#{modelGarde.listeP}" var="item" rowClasses="impair, pair" columnClasses="left,left,center">
+		<h:dataTable styleClass="liste" value="#{modelGarde.listeP}" var="garde" rowClasses="impair, pair" columnClasses="left,left,center">
     
     <h:column>
         <f:facet name="header">
             <h:outputText value="Identifiant" />
         </f:facet>
-        <h:outputText value="#{item.id}" />
+        <h:outputText value="#{garde.id}" />
     </h:column>
 
     <h:column>
         <f:facet name="header">
             <h:outputText value="Date" />
         </f:facet>
-        <h:outputText value="#{item.date}" />
+        <h:outputText value="#{garde.date}" />
     </h:column>
 
     <h:column>
         <f:facet name="header">
             <h:outputText value="Nom de l'enfant" />
         </f:facet>
-        <h:outputText value="#{item.contrat.nom} #{item.contrat.prenom}" />
+        <h:outputText value="#{modelContrat.courant.nom} #{modelContrat.courant.prenom}" />
     </h:column>
 
     <h:column>
         <f:facet name="header">
             <h:outputText value="Heure Arrivée" />
         </f:facet>
-        <h:outputText value="#{item.heureArrivee}" />
+        <h:outputText value="#{garde.heureArrivee}" />
     </h:column>
 
     <h:column>
         <f:facet name="header">
             <h:outputText value="Heure Départ" />
         </f:facet>
-        <h:outputText value="#{item.heureDepart}" />
+        <h:outputText value="#{garde.heureDepart}" />
     </h:column>
 
     <h:column>
         <f:facet name="header">
             <h:outputText value="Repas" />
         </f:facet>
-        <h:outputText value="#{item.repas}" />
+        <h:outputText value="#{garde.repas}" />
     </h:column>
 
     <h:column>
