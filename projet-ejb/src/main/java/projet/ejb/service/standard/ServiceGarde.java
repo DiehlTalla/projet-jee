@@ -7,10 +7,12 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import projet.commun.dto.DtoContrat;
 import projet.commun.dto.DtoGarde;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceGarde;
 import projet.ejb.dao.IDaoGarde;
+import projet.ejb.data.Contrat;
 import projet.ejb.data.Garde;
 import projet.ejb.data.mapper.IMapperEjb;
 
@@ -65,5 +67,15 @@ public class ServiceGarde implements IServiceGarde {
 			listeP.add(mapper.map(garde));
 		}
 		return listeP;
+	}
+	
+	
+	@Override
+	public List<DtoGarde> listerParCompte(int idCompte) {
+		List<DtoGarde> liste = new ArrayList<>();
+		for (Garde garde : daoGarde.listerParCompte(idCompte)) {
+			liste.add(mapper.map(garde));
+		}
+		return liste;
 	}
 }

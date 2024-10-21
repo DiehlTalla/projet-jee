@@ -18,7 +18,7 @@ import projet.ejb.data.Garde;
 @Local
 //@TransactionAttribute(MANDATORY)
 public class DaoGarde implements IDaoGarde {
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -37,12 +37,12 @@ public class DaoGarde implements IDaoGarde {
 	@Override
 	public void supprimer(int idGarde) {
 		em.remove(retrouver(idGarde));
-		
+
 	}
 
 	@Override
 	public Garde retrouver(int idGarde) {
-		return em.find(Garde.class, idGarde);	
+		return em.find(Garde.class, idGarde);
 	}
 
 	@Override
@@ -54,13 +54,21 @@ public class DaoGarde implements IDaoGarde {
 		return query.getResultList();
 	}
 
-
 	@Override
 	public List<Garde> listerParContrat(int idContrat) {
 		em.clear();
 		var jpql = "SELECT g FROM Garde g WHERE g.contrat.id = :idContrat";
 		var query = em.createQuery(jpql, Garde.class);
 		query.setParameter("idContrat", idContrat);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Garde> listerParCompte(int idCompte) {
+		em.clear();
+		var jpql = "SELECT g FROM Garde g WHERE g.contrat.parent.compte.id = :idCompte";
+		var query = em.createQuery(jpql, Garde.class);
+		query.setParameter("idCompte", idCompte);
 		return query.getResultList();
 	}
 

@@ -73,9 +73,9 @@ public class ServiceContrat implements IServiceContrat {
 		}
 		
 		@Override
-		public List<DtoContrat> listerParCompte(int idParent) {
+		public List<DtoContrat> listerParCompte(int idCompte) {
 			List<DtoContrat> liste = new ArrayList<>();
-			for (Contrat contrat : daoContrat.listerParCompte(idParent)) {
+			for (Contrat contrat : daoContrat.listerParCompte(idCompte)) {
 				liste.add(mapper.map(contrat));
 			}
 			return liste;

@@ -18,4 +18,6 @@ public interface IServiceGarde {
 	List<DtoGarde> listerTout();
 
 	List<DtoGarde> 	listerParContrat(int idContrat);
+
+	List<DtoGarde> listerParCompte(int idParent);
 }
