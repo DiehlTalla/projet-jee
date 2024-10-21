@@ -10,11 +10,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import projet.commun.dto.DtoContrat;
 import projet.commun.dto.DtoGarde;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceGarde;
 import projet.jsf.data.Garde;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @SuppressWarnings("serial")
@@ -24,6 +26,9 @@ public class ModelGarde implements Serializable {
 
 	private List<Garde> liste;
 	private Garde courant;
+	
+	@Inject
+	private CompteActif compteActif;
 	
 	private List<Garde> listeP;
 	
@@ -38,8 +43,14 @@ public class ModelGarde implements Serializable {
 	public List<Garde> getListe() {
 		if (liste == null) {
 			liste = new ArrayList<>();
-			for (DtoGarde dto : serviceGarde.listerTout()) {
-				liste.add(mapper.map(dto));
+			if (compteActif.isAdmin()) {
+				for (DtoGarde dto : serviceGarde.listerTout()) {
+					liste.add(mapper.map(dto));
+				}
+			}else {
+				for (DtoContrat dto : serviceGarde.listerParCompte(compteActif.getId())) {
+					liste.add(mapper.map(dto));
+				}
 			}
 		}
 		return liste;
