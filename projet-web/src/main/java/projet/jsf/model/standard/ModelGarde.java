@@ -48,7 +48,7 @@ public class ModelGarde implements Serializable {
 					liste.add(mapper.map(dto));
 				}
 			}else {
-				for (DtoContrat dto : serviceGarde.listerParCompte(compteActif.getId())) {
+				for (DtoGarde dto : serviceGarde.listerParCompte(compteActif.getId())) {
 					liste.add(mapper.map(dto));
 				}
 			}
