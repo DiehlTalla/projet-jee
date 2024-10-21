@@ -26,10 +26,10 @@
 	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
 	<h:form rendered="#{compteActif.loggedIn}">
 			<h:link outcome="contrats" value="Contrats"  />
+			<h:link outcome="gardes" value="Gardes" />
 		<h:panelGroup rendered="#{compteActif.admin}">
 			<h:link outcome="comptes" value="Comptes"  />
 			<h:link outcome="parents" value="Parents"  />
-			<h:link outcome="gardes" value="Gardes" />
 			<h:link outcome="tarifs" value="Tarifs" />
 		</h:panelGroup>
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
