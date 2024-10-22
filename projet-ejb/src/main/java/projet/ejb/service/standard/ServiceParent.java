@@ -1,6 +1,5 @@
 package projet.ejb.service.standard;
 
-import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 import static javax.ejb.TransactionAttributeType.REQUIRED;
 
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import java.util.List;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoParent;
