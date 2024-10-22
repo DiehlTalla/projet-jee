@@ -2,10 +2,12 @@ package projet.jsf.model.standard;
 
 import java.io.Serializable;
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -32,7 +34,7 @@ public class ModelGarde implements Serializable {
 	
 	private List<Garde> listeP;
 	
-	private long duree;
+//	private long duree;
 	
 	@EJB
 	private IServiceGarde serviceGarde;
@@ -60,9 +62,12 @@ public class ModelGarde implements Serializable {
 	public List<Garde> getListeP() {
 		if (listeP == null) {
 			listeP = new ArrayList<>();
-			for (DtoGarde dto : serviceGarde.listerParContrat(courant.getContrat().getId())) {
+			String contratId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+
+			for (DtoGarde dto : serviceGarde.listerParContrat(Integer.valueOf(contratId))) {
 				listeP.add(mapper.map(dto));
 			}
+			
 		}
 		return listeP;
 	}
@@ -78,6 +83,12 @@ public class ModelGarde implements Serializable {
 	public String actualiserCourant() {
 		if (courant != null) {
 			DtoGarde dto = serviceGarde.retrouver(courant.getId());
+//			if (listeP == null) {
+//				listeP = new ArrayList<>();
+//				for (DtoGarde dtoG : serviceGarde.listerParContrat(courant.getContrat().getId())) {
+//					listeP.add(mapper.map(dto));
+//				}
+//			}
 			if (dto == null) {
 				UtilJsf.messageError("Le garde demandé n'existe pas");
 				return "test/liste";
@@ -116,13 +127,11 @@ public class ModelGarde implements Serializable {
 	}
 	
 	
-	public long calculDuree() {
-        Duration dur = Duration.between(courant.getHeureArrivee(), courant.getHeureDepart());
-        long hours = dur.toHours();
-        long minutes = dur.toMinutes() % 60;
-        duree = hours+minutes;
-        return duree;
+	public double calculDuree(LocalTime heureArrivee, LocalTime heureDepart) {
+        Duration dur = Duration.between(heureArrivee, heureDepart);
+        long totalMinutes = dur.toMinutes();
+//        long minutes = dur.toMinutes() % 60;
+        double dureeEnHeures = totalMinutes / 60.0;
+        return dureeEnHeures;
 	}
-	
-
 }
