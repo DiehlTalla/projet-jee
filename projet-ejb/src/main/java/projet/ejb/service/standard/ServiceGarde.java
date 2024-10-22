@@ -62,11 +62,11 @@ public class ServiceGarde implements IServiceGarde {
 
 	@Override
 	public List<DtoGarde> listerParContrat(int idContrat) {
-		List<DtoGarde> listeP = new ArrayList<>();
+		List<DtoGarde> liste = new ArrayList<>();
 		for (Garde garde : daoGarde.listerParContrat(idContrat)) {
-			listeP.add(mapper.map(garde));
+			liste.add(mapper.map(garde));
 		}
-		return listeP;
+		return liste;
 	}
 	
 	

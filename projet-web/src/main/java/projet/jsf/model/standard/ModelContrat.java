@@ -37,7 +37,7 @@ public class ModelContrat implements Serializable {
 	@Inject
 	private IServiceGarde serviceGarde;
 	
-//	private List<Contrat> listeP;
+	private List<Contrat> listeP;
 	
 	@EJB
 	private IServiceContrat serviceContrat;
@@ -62,16 +62,16 @@ public class ModelContrat implements Serializable {
 		return liste;
 	}
 	
-//	
-//	public List<Contrat> getListeP() {
+	
+	public List<Contrat> getListeP() {
 //		if (listeP == null) {
 //			listeP = new ArrayList<>();
 //			for (DtoContrat dto : serviceContrat.listerParParent(courant.getId())) {
 //				listeP.add(mapper.map(dto));
 //			}
 //		}
-//		return listeP;
-//	}
+		return listeP;
+	}
 
 	public Contrat getCourant() {
 		if (courant == null) {
@@ -85,6 +85,7 @@ public class ModelContrat implements Serializable {
 		if (courant != null) {
 			serviceGarde.listerParContrat(courant.getId());
 			DtoContrat dto = serviceContrat.retrouver(courant.getId());
+//			serviceContrat.listerParParent(courant.getParent().getId());
 			if (dto == null) {
 				UtilJsf.messageError("Le contrat demandé n'existe pas");
 				return "test/liste";
@@ -128,8 +129,8 @@ public class ModelContrat implements Serializable {
 	
 	
 	public void comparerDates() {
-        if (courant.getDebut() != null && courant.getFin() != null) {
-            if (courant.getDebut().after(courant.getFin())) {
+        if (getCourant().getDebut() != null && getCourant().getFin() != null) {
+            if (getCourant().getDebut().after(getCourant().getFin())) {
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erreur", "La date de début ne peut pas être postérieure à la date de fin."));
             } else {

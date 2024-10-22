@@ -55,11 +55,21 @@
         <h:outputText value="#{item.repas}" />
     </h:column>
 
+	
+	<h:column>
+        <f:facet name="header">
+            <h:outputText value="Durée" />
+        </f:facet>
+        <h:outputText value="#{modelGarde.calculDuree(item.heureArrivee, item.heureDepart)}" />
+    </h:column>
+	
+	
+	
     <h:column>
         <f:facet name="header">
             <h:outputText value="Actions" />
         </f:facet>
-        <h:button outcome="formulaire?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
+        <h:button outcome="/projet-web/src/main/webapp/pages/garde/formulaire.xhtml?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
         <h:commandButton action="#{modelGarde.supprimer(item)}" value="Supprimer" onclick="return confirm('Confirmez-vous la suppression ?')" image="#{resource['images:supprimer.png']}" title="Supprimer" styleClass="image-action">
             <f:ajax render="@form" execute="@form" />
         </h:commandButton>
