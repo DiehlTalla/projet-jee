@@ -101,6 +101,7 @@
 						image="#{ resource['images:modifier.png'] }" title="Modifier"
 						styleClass="image-action" />
 					<f:param name="id" value="#{item.id}" />
+				<h:panelGroup rendered="#{compteActif.admin}">
 					<h:commandButton action="#{modelContrat.supprimer(item)}"
 						value="Supprimer"
 						onclick="return confirm('Confirmez-vous la suppression ?')"
@@ -108,13 +109,16 @@
 						styleClass="image-action">
 						<f:ajax render="@form" execute="@form" />
 					</h:commandButton>
+				</h:panelGroup>
 				</h:column>
 
 			</h:dataTable>
 
 			<br />
+			<h:panelGroup rendered="#{compteActif.admin}">
 			<h:button value="Ajouter" outcome="formulaire">
 			</h:button>
+			</h:panelGroup>
 
 
 		</h:form>

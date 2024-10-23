@@ -48,10 +48,10 @@ public class Contrat {
 	private BigDecimal tauxHoraire;
 	
 	@Column(name = "indemniteentretient")
-	private int entretien;
+	private BigDecimal entretien;
 	
 	@Column(name = "indemniterepas")
-	private int indemniteRepas;
+	private BigDecimal indemniteRepas;
 
 	
 	public Contrat() {
@@ -59,7 +59,7 @@ public class Contrat {
 	}
 
 	public Contrat(int id, Parent parent, String nom, String prenom, Date dateNaissance, Date debut, Date fin,
-			BigDecimal tarifHoraire, BigDecimal tauxHoraire, int entretien, int indemniteRepas) {
+			BigDecimal tarifHoraire, BigDecimal tauxHoraire, BigDecimal entretien, BigDecimal indemniteRepas) {
 
 		this.id = id;
 		this.parent = parent;
@@ -147,19 +147,19 @@ public class Contrat {
 		this.tauxHoraire = tauxHoraire;
 	}
 
-	public int getEntretien() {
+	public BigDecimal getEntretien() {
 		return entretien;
 	}
 
-	public void setEntretien(int entretien) {
+	public void setEntretien(BigDecimal entretien) {
 		this.entretien = entretien;
 	}
 
-	public int getIndemniteRepas() {
+	public BigDecimal getIndemniteRepas() {
 		return indemniteRepas;
 	}
 
-	public void setIndemniteRepas(int indemniteRepas) {
+	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
 	}
 

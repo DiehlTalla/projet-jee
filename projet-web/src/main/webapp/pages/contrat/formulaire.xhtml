@@ -162,19 +162,28 @@
         <f:facet name="header">
             <h:outputText value="Actions" />
         </f:facet>
-        <h:button outcome="/projet-web/src/main/webapp/pages/garde/formulaire.xhtml?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
+<!--         <h:button outcome="formulaire?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" /> -->
         <h:commandButton action="#{modelGarde.supprimer(item)}" value="Supprimer" onclick="return confirm('Confirmez-vous la suppression ?')" image="#{resource['images:supprimer.png']}" title="Supprimer" styleClass="image-action">
             <f:ajax render="@form" execute="@form" />
         </h:commandButton>
     </h:column>
 
 </h:dataTable>
+
+		<br />
+
+			<h:outputLabel for="id">Total à payer : </h:outputLabel>
+			<h:inputText id="id1" size="5" readonly="true"
+							value="#{modelContrat.totalAPayer(modelGarde.listeP, modelContrat.courant.tarifHoraire, modelContrat.courant.tauxHoraire, modelContrat.courant.entretien, modelContrat.courant.indemniteRepas)}" />
 		
-			
-			
+		
+			<br />
+			<br />
+			<h:panelGroup rendered="#{compteActif.admin}">
 			<h:commandButton value="Valider"
 				action="#{modelContrat.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="contrats" />
+			</h:panelGroup>
 		</h:form>
 		
 

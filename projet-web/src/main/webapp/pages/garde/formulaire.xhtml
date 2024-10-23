@@ -79,9 +79,11 @@
 			</table>
 
 			<br />
+			<h:panelGroup rendered="#{compteActif.admin}">
 			<h:commandButton value="Valider"
 				action="#{modelGarde.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="gardes" />
+			</h:panelGroup>
 		</h:form>
 
 	</ui:define>

@@ -77,11 +77,118 @@
 
 
 			</table>
+			
+			<br />
+			
+			<h:dataTable styleClass="liste" value="#{modelContrat.liste}"
+				var="item" rowClasses="impair, pair"
+				columnClasses="left,left,center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="identifiant" />
+					</f:facet>
+				#{item.id}
+			</h:column>
+
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom de l'enfant" />
+					</f:facet>
+				#{item.nom} #{item.prenom}
+			</h:column>
+
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Date de naissance" />
+					</f:facet>
+				#{item.dateNaissance}
+			</h:column>
+
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Nom du parent" /> -->
+<!-- 					</f:facet> -->
+<!-- 				#{item.parent.nom} #{item.parent.prenom} -->
+<!-- 			</h:column> -->
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Date de début" />
+					</f:facet>
+				#{item.debut}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Date de fin" />
+					</f:facet>
+				#{item.fin}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tarif horaire" />
+					</f:facet>
+				#{item.tarifHoraire}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idemnité d'entretien" />
+					</f:facet>
+				#{item.entretien}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Taux horaire" />
+					</f:facet>
+				#{item.tauxHoraire}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idemnité de repas" />
+					</f:facet>
+				#{item.indemniteRepas}
+			</h:column>
+
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Voir les gardes" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:link outcome="gardes" value="Voir les gardes" /> -->
+<!-- 				</h:column> -->
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Actions" />
+					</f:facet>
+					<h:button outcome="formulaire?id=#{item.id}"
+						image="#{ resource['images:modifier.png'] }" title="Modifier"
+						styleClass="image-action" />
+					<f:param name="id" value="#{item.id}" />
+				<h:panelGroup rendered="#{compteActif.admin}">
+					<h:commandButton action="#{modelContrat.supprimer(item)}"
+						value="Supprimer"
+						onclick="return confirm('Confirmez-vous la suppression ?')"
+						image="#{ resource['images:supprimer.png'] }" title="Supprimer"
+						styleClass="image-action">
+						<f:ajax render="@form" execute="@form" />
+					</h:commandButton>
+				</h:panelGroup>
+				</h:column>
+
+			</h:dataTable>
 
 			<br />
+			<h:panelGroup rendered="#{compteActif.admin}">
 			<h:commandButton value="Valider"
 				action="#{modelParent.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="parents" />
+			</h:panelGroup>
 		</h:form>
 
 	</ui:define>

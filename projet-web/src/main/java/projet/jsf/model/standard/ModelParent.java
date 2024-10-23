@@ -9,12 +9,14 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import projet.commun.dto.DtoGarde;
 import projet.commun.dto.DtoParent;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCompte;
 import projet.commun.service.IServiceParent;
 import projet.jsf.data.Parent;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @SuppressWarnings("serial")
@@ -26,6 +28,9 @@ public class ModelParent implements Serializable {
 	private List<Parent> liste;
 	private List<Parent> listeAvecNull;
 	private Parent courant;
+	
+	@Inject
+	private CompteActif compteActif;
 	
 	@EJB
 	private IServiceParent serviceParent;
@@ -39,8 +44,14 @@ public class ModelParent implements Serializable {
 	public List<Parent> getListe() {
 		if (liste == null) {
 			liste = new ArrayList<>();
-			for (DtoParent dto : serviceParent.listerTout()) {
-				liste.add(mapper.map(dto));
+			if (compteActif.isAdmin()) {
+				for (DtoParent dto : serviceParent.listerTout()) {
+					liste.add(mapper.map(dto));
+				}
+			}else {
+				for (DtoParent dto : serviceParent.listerParCompte(compteActif.getId())) {
+					liste.add(mapper.map(dto));
+				}
 			}
 		}
 		return liste;

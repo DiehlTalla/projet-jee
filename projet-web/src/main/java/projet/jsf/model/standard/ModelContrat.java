@@ -1,6 +1,8 @@
 package projet.jsf.model.standard;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +14,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import projet.commun.dto.DtoContrat;
+import projet.commun.dto.DtoGarde;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceContrat;
 import projet.commun.service.IServiceGarde;
 import projet.jsf.data.Compte;
 import projet.jsf.data.Contrat;
+import projet.jsf.data.Garde;
 import projet.jsf.data.mapper.IMapper;
 import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
@@ -63,15 +67,19 @@ public class ModelContrat implements Serializable {
 	}
 	
 	
+	
 	public List<Contrat> getListeP() {
-//		if (listeP == null) {
-//			listeP = new ArrayList<>();
-//			for (DtoContrat dto : serviceContrat.listerParParent(courant.getId())) {
-//				listeP.add(mapper.map(dto));
-//			}
-//		}
+		if (listeP == null) {
+			listeP = new ArrayList<>();
+		String parentId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+
+			for (DtoContrat dto : serviceContrat.listerParParent(Integer.valueOf(parentId))) {
+				listeP.add(mapper.map(dto));
+			}
+		}
 		return listeP;
 	}
+	
 
 	public Contrat getCourant() {
 		if (courant == null) {
@@ -139,5 +147,27 @@ public class ModelContrat implements Serializable {
             }
         }
     }
+	
+	
+	public double totalAPayer(List<Garde> gardes,BigDecimal tarif, BigDecimal taux, BigDecimal indemnite, BigDecimal repas) {
+		List<Double> montants = new ArrayList<>();
+		for (Garde garde : gardes) {
+			Duration dur = Duration.between(garde.getHeureArrivee(), garde.getHeureDepart());
+	        long totalMinutes = dur.toMinutes();
+//	        long minutes = dur.toMinutes() % 60;
+	        double duree = totalMinutes / 60.0;
+	        double revenu = tarif.doubleValue()*duree;
+			revenu = revenu + taux.doubleValue()*duree; 
+			revenu = revenu + indemnite.doubleValue(); 
+			revenu = revenu + repas.doubleValue();
+			montants.add(revenu);
+		}
+		double somme = 0.0;
+        for (Double valeur : montants) {
+            somme += valeur;
+        }
+//		double somme = gardes.stream().mapToDouble(Double::doubleValue).sum();
+        return somme;
+	}
 
 }

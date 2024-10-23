@@ -17,10 +17,10 @@ public class DtoContrat implements Serializable {
 	private Date dateNaissance;
 	private Date debut;
 	private Date fin;
-	private int tarifHoraire;
-	private int entretien;
-	private int tauxHoraire;
-	private int indemniteRepas;
+	private double tarifHoraire;
+	private double entretien;
+	private double tauxHoraire;
+	private double indemniteRepas;
 	private DtoParent parent;
 	
 	
@@ -29,8 +29,8 @@ public class DtoContrat implements Serializable {
 	}
 	
 	
-	public DtoContrat(int id, String nom, String prenom, Date dateNaissance, Date debut, Date fin, int tarifHoraire,
-			int entretien, int tauxHoraire,int indemniteRepas, DtoParent parent) {
+	public DtoContrat(int id, String nom, String prenom, Date dateNaissance, Date debut, Date fin, double tarifHoraire,
+			double entretien, double tauxHoraire,double indemniteRepas, DtoParent parent) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -107,43 +107,43 @@ public class DtoContrat implements Serializable {
 	}
 
 
-	public int getTarifHoraire() {
+	public double getTarifHoraire() {
 		return tarifHoraire;
 	}
 
 
-	public void setTarifHoraire(int tarifHoraire) {
+	public void setTarifHoraire(double tarifHoraire) {
 		this.tarifHoraire = tarifHoraire;
 	}
 
 
-	public int getEntretien() {
+	public double getEntretien() {
 		return entretien;
 	}
 
 
-	public void setEntretien(int entretien) {
+	public void setEntretien(double entretien) {
 		this.entretien = entretien;
 	}
 	
 	
 	
-	public int getTauxHoraire() {
+	public double getTauxHoraire() {
 		return tauxHoraire;
 	}
 
 
-	public void setTauxHoraire(int tauxHoraire) {
+	public void setTauxHoraire(double tauxHoraire) {
 		this.tauxHoraire = tauxHoraire;
 	}
 
 
-	public int getIndemniteRepas() {
+	public double getIndemniteRepas() {
 		return indemniteRepas;
 	}
 
 
-	public void setIndemniteRepas(int indemniteRepas) {
+	public void setIndemniteRepas(double indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
 	}
 

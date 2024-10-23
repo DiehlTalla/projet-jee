@@ -16,4 +16,6 @@ public interface IDaoParent {
 
 	List<Parent> listerTout();
 
+	List<Parent> listerParCompte(int idCompte);
+
 }

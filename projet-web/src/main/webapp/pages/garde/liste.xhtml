@@ -60,27 +60,37 @@
         <f:facet name="header">
             <h:outputText value="Durée" />
         </f:facet>
-        <h:outputText value="#{modelGarde.calculDuree(item.heureArrivee, item.heureDepart)}" />
+        <h:outputText value="#{modelGarde.calculDuree(item.heureArrivee, item.heureDepart)}" var="duree" />
     </h:column>
 	
+	<h:column>
+        <f:facet name="header">
+            <h:outputText value="Montant à payer" />
+        </f:facet>
+        <h:outputText value="#{modelGarde.calculRevenu(modelGarde.calculDuree(item.heureArrivee, item.heureDepart),item.contrat.tarifHoraire,item.contrat.tauxHoraire,item.contrat.entretien,item.contrat.indemniteRepas)}" />
+    </h:column>
 	
 	
     <h:column>
         <f:facet name="header">
             <h:outputText value="Actions" />
         </f:facet>
-        <h:button outcome="/projet-web/src/main/webapp/pages/garde/formulaire.xhtml?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
+        <h:panelGroup rendered="#{compteActif.admin}">
+        <h:button outcome="formulaire?id=#{item.id}" image="#{resource['images:modifier.png']}" title="Modifier" styleClass="image-action" />
         <h:commandButton action="#{modelGarde.supprimer(item)}" value="Supprimer" onclick="return confirm('Confirmez-vous la suppression ?')" image="#{resource['images:supprimer.png']}" title="Supprimer" styleClass="image-action">
             <f:ajax render="@form" execute="@form" />
         </h:commandButton>
+        </h:panelGroup>
     </h:column>
 
 </h:dataTable>
 
 
 			<br />
+			<h:panelGroup rendered="#{compteActif.admin}">
 			<h:button value="Ajouter" outcome="formulaire">
 			</h:button>
+			</h:panelGroup>
 
 		</h:form>
 

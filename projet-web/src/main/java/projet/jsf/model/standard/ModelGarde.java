@@ -1,6 +1,7 @@
 package projet.jsf.model.standard;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ModelGarde implements Serializable {
 	
 	private List<Garde> listeP;
 	
-//	private long duree;
+//	private double dureeEnHeures =0.0;
 	
 	@EJB
 	private IServiceGarde serviceGarde;
@@ -133,5 +134,13 @@ public class ModelGarde implements Serializable {
 //        long minutes = dur.toMinutes() % 60;
         double dureeEnHeures = totalMinutes / 60.0;
         return dureeEnHeures;
+	}
+	
+	public double calculRevenu(double duree, BigDecimal tarif, BigDecimal taux, BigDecimal indemnite, BigDecimal repas) {
+		double revenu = tarif.doubleValue()*duree;
+		revenu = revenu + taux.doubleValue()*duree; 
+		revenu = revenu + indemnite.doubleValue(); 
+		revenu = revenu + repas.doubleValue();
+		return revenu;
 	}
 }

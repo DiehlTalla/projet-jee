@@ -10,10 +10,12 @@ import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
+import projet.commun.dto.DtoGarde;
 import projet.commun.dto.DtoParent;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceParent;
 import projet.ejb.dao.IDaoParent;
+import projet.ejb.data.Garde;
 import projet.ejb.data.Parent;
 import projet.ejb.data.mapper.IMapperEjb;
 
@@ -60,6 +62,16 @@ public class ServiceParent implements IServiceParent {
 			public List<DtoParent> listerTout() {
 				List<DtoParent> liste = new ArrayList<>();
 				for (Parent parent : daoParent.listerTout()) {
+					liste.add(mapper.map(parent));
+				}
+				return liste;
+			}
+			
+
+			@Override
+			public List<DtoParent> listerParCompte(int idCompte) {
+				List<DtoParent> liste = new ArrayList<>();
+				for (Parent parent : daoParent.listerParCompte(idCompte)) {
 					liste.add(mapper.map(parent));
 				}
 				return liste;

@@ -17,4 +17,6 @@ public interface IServiceParent {
 
 	List<DtoParent>	listerTout();
 
+	List<DtoParent> listerParCompte(int idCompte);
+
 }

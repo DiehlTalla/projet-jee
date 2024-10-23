@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoParent;
+import projet.ejb.data.Garde;
 import projet.ejb.data.Parent;
 
 
@@ -50,6 +51,15 @@ public class DaoParent implements IDaoParent {
 		em.clear();
 		var jpql = "SELECT p FROM Parent p ORDER BY p.nom";
 		var query = em.createQuery(jpql, Parent.class);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Parent> listerParCompte(int idCompte) {
+		em.clear();
+		var jpql = "SELECT p FROM Parent p WHERE p.compte.id = :idCompte";
+		var query = em.createQuery(jpql, Parent.class);
+		query.setParameter("idCompte", idCompte);
 		return query.getResultList();
 	}
 
