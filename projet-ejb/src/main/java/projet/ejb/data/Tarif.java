@@ -30,18 +30,20 @@ public class Tarif {
 	@Column(name = "indemniteRepas")
 	private BigDecimal indemniteRepas;
 	
-	
+	@Column(name = "tauxhoraire")
+	private BigDecimal tauxHoraire;
 	
 	public Tarif() {
 	}
 	
 	
 
-	public Tarif(int id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas) {
+	public Tarif(int id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas, BigDecimal tauxHoraire) {
 		this.id = id;
 		this.tarifHoraire = tarifHoraire;
 		this.minimumJournalier = minimumJournalier;
 		this.indemniteRepas = indemniteRepas;
+		this.tauxHoraire = tauxHoraire;
 	}
 
 
@@ -90,6 +92,20 @@ public class Tarif {
 
 	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
+	}
+
+	
+	
+
+
+	public BigDecimal getTauxHoraire() {
+		return tauxHoraire;
+	}
+
+
+
+	public void setTauxHoraire(BigDecimal tauxHoraire) {
+		this.tauxHoraire = tauxHoraire;
 	}
 
 

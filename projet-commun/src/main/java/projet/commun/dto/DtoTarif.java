@@ -10,17 +10,19 @@ public class DtoTarif implements Serializable {
 	private BigDecimal tarifHoraire;
 	private BigDecimal minimumJournalier;
 	private BigDecimal indemniteRepas;
+	private BigDecimal tauxHoraire;
 	
 	
 	public DtoTarif() {
 	}
 	
 	
-	public DtoTarif(int id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas) {
+	public DtoTarif(int id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas, BigDecimal tauxHoraire) {
 		this.id = id;
 		this.tarifHoraire = tarifHoraire;
 		this.minimumJournalier = minimumJournalier;
 		this.indemniteRepas = indemniteRepas;
+		this.tauxHoraire = tauxHoraire;
 	}
 
 
@@ -62,6 +64,18 @@ public class DtoTarif implements Serializable {
 	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
 	}
+
+
+	public BigDecimal getTauxHoraire() {
+		return tauxHoraire;
+	}
+
+
+	public void setTauxHoraire(BigDecimal tauxHoraire) {
+		this.tauxHoraire = tauxHoraire;
+	}
+	
+	
 	
 	
 	

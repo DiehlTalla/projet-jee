@@ -52,6 +52,17 @@
 			
 			<tr>
 				<td>
+					<h:outputLabel for="taux">Taux horaire :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="taux" size="25" 
+						value="#{modelTarif.courant.tauxHoraire}" />
+					<br /><h:message for="taux" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
 					<h:outputLabel for="repas">Indemnite repas :</h:outputLabel>				
 				</td>
 				<td>

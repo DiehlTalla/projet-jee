@@ -3,6 +3,8 @@ package projet.jsf.data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
@@ -20,21 +22,27 @@ public class Tarif implements Serializable {
 	@PositiveOrZero(message = "Ce champ doit être positif ou nul")
 	private BigDecimal minimumJournalier;
 	
+	@Max(value = 5, message = "L'indemnité repas doit être entre 1€ et 5€")
+	@Min(value = 1, message = "L'indemnité repas doit être entre 1€ et 5€")
 	@NotNull(message = "L'indemnité de repas doit être renseigné")
 	@PositiveOrZero(message = "Ce champ doit être positif ou nul")
 	private BigDecimal indemniteRepas;
 	
+	@NotNull(message = "L'indemnité de repas doit être renseigné")
+	@PositiveOrZero(message = "Ce champ doit être positif ou nul")
+	private BigDecimal tauxHoraire;
 	
 	public Tarif() {
 	}
 	
 	
 
-	public Tarif(Integer id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas) {
+	public Tarif(Integer id, BigDecimal tarifHoraire, BigDecimal minimumJournalier, BigDecimal indemniteRepas, BigDecimal tauxHoraire) {
 		this.id = id;
 		this.tarifHoraire = tarifHoraire;
 		this.minimumJournalier = minimumJournalier;
 		this.indemniteRepas = indemniteRepas;
+		this.tauxHoraire = tauxHoraire;
 	}
 
 	public Integer getId() {
@@ -67,6 +75,18 @@ public class Tarif implements Serializable {
 
 	public void setIndemniteRepas(BigDecimal indemniteRepas) {
 		this.indemniteRepas = indemniteRepas;
+	}
+
+
+
+	public BigDecimal getTauxHoraire() {
+		return tauxHoraire;
+	}
+
+
+
+	public void setTauxHoraire(BigDecimal tauxHoraire) {
+		this.tauxHoraire = tauxHoraire;
 	}
 
 	
