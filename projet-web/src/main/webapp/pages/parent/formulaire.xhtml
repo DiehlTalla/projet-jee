@@ -167,10 +167,10 @@
 						<h:outputText value="Actions" />
 					</f:facet>
 				<h:panelGroup rendered="#{compteActif.admin}">
-					<h:button outcome="formulaire?id=#{item.id}"
-						image="#{ resource['images:modifier.png'] }" title="Modifier"
-						styleClass="image-action" />
-					<f:param name="id" value="#{item.id}" />
+<!-- 					<h:button outcome="formulaire?id=#{item.id}" -->
+<!-- 						image="#{ resource['images:modifier.png'] }" title="Modifier" -->
+<!-- 						styleClass="image-action" /> -->
+<!-- 					<f:param name="id" value="#{item.id}" /> -->
 					<h:commandButton action="#{modelContrat.supprimer(item)}"
 						value="Supprimer"
 						onclick="return confirm('Confirmez-vous la suppression ?')"
