@@ -67,7 +67,7 @@ CREATE TABLE garde (
 	DateGarde				DATE					 NOT NULL,
 	HeureArrivee            TIME                     NOT NULL,
 	HeureDepart        	    TIME                     NOT NULL,
-	Repas                   BOOLEAN                  NOT NULL,
+	Repas                   INT                  NOT NULL,
 	FOREIGN KEY (IdContrat) REFERENCES contrat (IdContrat) ON DELETE CASCADE,
 	PRIMARY KEY(IdGarde)
 	

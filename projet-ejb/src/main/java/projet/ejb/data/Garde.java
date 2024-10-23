@@ -32,13 +32,13 @@ public class Garde {
 	@Column(name = "heureDepart")
 	private LocalTime heureDepart;
 	@Column(name = "repas")
-	private Boolean repas;
+	private int repas;
 
 	public Garde() {
 
 	}
 
-	public Garde(int id, Contrat contrat, Date date, LocalTime heureArrivee, LocalTime heureDepart, Boolean repas) {
+	public Garde(int id, Contrat contrat, Date date, LocalTime heureArrivee, LocalTime heureDepart, int repas) {
 		super();
 		this.id = id;
 		this.contrat = contrat;
@@ -88,11 +88,11 @@ public class Garde {
 		this.heureDepart = heureDepart;
 	}
 
-	public Boolean getRepas() {
+	public int getRepas() {
 		return repas;
 	}
 
-	public void setRepas(Boolean repas) {
+	public void setRepas(int repas) {
 		this.repas = repas;
 	}
 

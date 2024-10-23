@@ -23,7 +23,7 @@ public class Garde implements Serializable {
 	@NotNull(message = "L'heure doit être renseignée")
 	private LocalTime heureDepart;
 
-	private Boolean repas;
+	private int repas;
 
 	public Garde() {
 
@@ -32,7 +32,7 @@ public class Garde implements Serializable {
 	public Garde(Integer id, @NotNull(message = "Le contrat doit être renseigné ") Contrat contrat,
 			@NotNull(message = "La date  doit être renseignée") Date date,
 			@NotNull(message = "L'heure doit être renseignée") LocalTime heureArrivee,
-			@NotNull(message = "L'heure doit être renseignée") LocalTime heureDepart, Boolean repas) {
+			@NotNull(message = "L'heure doit être renseignée") LocalTime heureDepart, int repas) {
 		super();
 		this.id = id;
 		this.contrat = contrat;
@@ -82,11 +82,11 @@ public class Garde implements Serializable {
 		this.heureDepart = heureDepart;
 	}
 
-	public Boolean getRepas() {
+	public int getRepas() {
 		return repas;
 	}
 
-	public void setRepas(Boolean repas) {
+	public void setRepas(int repas) {
 		this.repas = repas;
 	}
 

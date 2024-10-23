@@ -28,6 +28,9 @@ import projet.jsf.util.UtilJsf;
 public class ModelGarde implements Serializable {
 
 	private List<Garde> liste;
+	
+	private List<Integer> listeR;
+	
 	private Garde courant;
 	
 	@Inject
@@ -42,6 +45,18 @@ public class ModelGarde implements Serializable {
 
 	@Inject
 	private IMapper mapper;
+	
+	
+	
+	public List<Integer> getListeR(){
+		if(listeR == null) {
+			listeR = new ArrayList<>();
+			for(Integer i = 0; i <= 1; i++) {
+				listeR.add(i);
+			}
+		}
+		return listeR;
+	}
 
 	public List<Garde> getListe() {
 		if (liste == null) {
@@ -136,11 +151,11 @@ public class ModelGarde implements Serializable {
         return dureeEnHeures;
 	}
 	
-	public double calculRevenu(double duree, BigDecimal tarif, BigDecimal taux, BigDecimal indemnite, BigDecimal repas) {
+	public double calculRevenu(double duree, BigDecimal tarif, BigDecimal taux, BigDecimal indemnite, BigDecimal repas, int nbrepas) {
 		double revenu = tarif.doubleValue()*duree;
 		revenu = revenu + taux.doubleValue()*duree; 
 		revenu = revenu + indemnite.doubleValue(); 
-		revenu = revenu + repas.doubleValue();
+		revenu = repas.doubleValue()*nbrepas + revenu;
 		return revenu;
 	}
 }

@@ -72,9 +72,16 @@
 
 				<tr>
 					<td><h:outputLabel for="repas">Repas :</h:outputLabel></td>
-					<td><h:inputText id="repas"
-							value="#{modelGarde.courant.repas}" /> <br /> <h:message
-							for="repas" errorClass="error" /></td>
+					<td>
+					<h:selectOneMenu id="repas"
+							value="#{modelGarde.courant.repas}">
+							<f:selectItems value="#{modelGarde.listeR}" var="item"
+								itemLabel="#{item}" />
+						</h:selectOneMenu> <br />
+					<h:message for="repas" errorClass="error" /></td>
+<!-- 					<td><h:inputText id="repas" -->
+<!-- 							value="#{modelGarde.courant.repas}" /> <br /> <h:message -->
+<!-- 							for="repas" errorClass="error" /></td> -->
 				</tr>
 			</table>
 

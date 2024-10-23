@@ -11,14 +11,14 @@ public class DtoGarde implements Serializable {
 	private Date date;
 	private LocalTime heureArrivee;
 	private LocalTime heureDepart;
-	private Boolean repas;
+	private int repas;
 
 	public DtoGarde() {
 
 	}
 
 	public DtoGarde(int id, DtoContrat contrat, Date date, LocalTime heureArrivee, LocalTime heureDepart,
-			Boolean repas) {
+			int repas) {
 		super();
 		this.id = id;
 		this.contrat = contrat;
@@ -68,11 +68,11 @@ public class DtoGarde implements Serializable {
 		this.heureDepart = heureDepart;
 	}
 
-	public Boolean getRepas() {
+	public int getRepas() {
 		return repas;
 	}
 
-	public void setRepas(Boolean repas) {
+	public void setRepas(int repas) {
 		this.repas = repas;
 	}
 
